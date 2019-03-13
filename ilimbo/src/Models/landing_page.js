@@ -5,7 +5,7 @@ import GoogleLogin from 'react-google-login';
 class Landing extends Component {
   render() {
     const responseGoogle = (response) => {
-      console.log(response);
+      console.log(response.getAuthResponse().id_token);
     }
     return (
       <GoogleLogin
