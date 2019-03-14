@@ -6,7 +6,10 @@ CREATE TABLE IF NOT EXISTS users (
   first_name VARCHAR(60) NOT NULL,
   last_name  VARCHAR(60) NOT NULL,
   email VARCHAR(60) NOT NULL,
-  img_url VARCHAR(128)
+  img_url VARCHAR(128),
+  github VARCHAR(128),
+  linkedin VARCHAR(128),
+  twitter VARCHAR(128)
 );
 CREATE TABLE IF NOT EXISTS connections (
   id INT AUTO_INCREMENT,
