@@ -1,4 +1,5 @@
 -- Create all tables for Limbo app
+
 CREATE DATABASE IF NOT EXISTS limbo_test;
 use limbo_test;
 CREATE TABLE IF NOT EXISTS users (
