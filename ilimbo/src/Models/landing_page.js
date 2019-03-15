@@ -1,19 +1,22 @@
 import React, { Component } from 'react'
-import GoogleLogin from 'react-google-login';
+import './styles/landing_navbar.css'
+import LandingHeader from './landing_header'
 
 
 class Landing extends Component {
   render() {
-    const responseGoogle = (response) => {
-      console.log(response.getAuthResponse().id_token);
-    }
     return (
-      <GoogleLogin
-        clientId="959614478231-rhsbohn77k2664h64phq1v128lqp78l9.apps.googleusercontent.com"
-        buttonText="Login"
-        onSuccess={responseGoogle}
-        onFailure={responseGoogle}
-      />
+      <div>
+        <LandingHeader />
+        <div>sds</div>
+        <p>placeholder for about section</p>
+        <p>sds</p>
+        <p>sds</p>
+        <section className="landing-article">
+          <h2>Article:</h2>
+          <p>placeholder for comment box</p>
+        </section>
+      </div>
     )
   }
 }
