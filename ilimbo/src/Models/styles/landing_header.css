@@ -1,0 +1,45 @@
+.landing_header{
+  background: orangered;
+  height: 100vh;
+  display: flex;
+}
+.landing_slogan_container{
+  margin: 0 auto; 
+  align-self: center;
+  color: aliceblue;
+  text-align: center;
+}
+
+.landing-circle-btn{
+  width: 50px;
+  height: 50px;
+  margin-top: 15px;
+  padding: 1%;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  font-size: 40px;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.2);
+  -webkit-transition: background .3s ease-in-out;
+  -moz-transition: background .3s ease-in-out;
+  transition: background .3s ease-in-out;
+}
+.landing-circle-btn:hover{
+  animation: btnsize 0.8s infinite;
+  
+}
+@keyframes btnsize{
+  from {font-size: 40px;
+  }
+  to{
+    font-size: 35px;
+  }
+} 
+.landing_header a{
+  text-decoration: none;
+  
+}
+.landing-scroll-down{
+  display: flex;
+  justify-content: center;
+}
