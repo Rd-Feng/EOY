@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './styles/landing_navbar.css'
 import LandingHeader from './landing_header'
+import About from './about'
 
 
 class Landing extends Component {
@@ -9,8 +10,7 @@ class Landing extends Component {
       <div>
         <section id="intro"></section>
         <LandingHeader />
-        <section id='about'>sds</section>
-        <p>placeholder for about section</p>
+        <section id='about'> <About/> </section>
         <p>sds</p>
         <p>sds</p>
 

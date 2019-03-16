@@ -1,0 +1,64 @@
+.meet-the-team {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.team-card-animated {
+    width: 20%;
+    height: 100%;
+    text-align: center;
+    margin: 5%;
+    background-color: yellow;
+    animation-name: bounce-in-top;
+    animation-duration: 1.5s;
+}
+
+.team-card {
+    width: 20%;
+    height: 100%;
+    text-align: center;
+    margin: 5%;
+    background-color: yellow;
+}
+
+.developers {
+    font-size: 40px;
+}
+
+@keyframes bounce-in-top {
+  0% {
+    transform: translateY(-500px);
+    animation-timing-function: ease-in;
+    opacity: 0;
+  }
+  38% {
+    transform: translateY(0);
+    animation-timing-function: ease-out;
+    opacity: 1;
+  }
+  55% {
+    transform: translateY(-65px);
+    animation-timing-function: ease-in;
+  }
+  72% {
+    transform: translateY(0);
+    animation-timing-function: ease-out;
+  }
+  81% {
+    transform: translateY(-28px);
+    animation-timing-function: ease-in;
+  }
+  90% {
+    transform: translateY(0);
+    animation-timing-function: ease-out;
+  }
+  95% {
+    transform: translateY(-8px);
+    animation-timing-function: ease-in;
+  }
+  100% {
+    transform: translateY(0);
+    animation-timing-function: ease-out;
+  }
+}
