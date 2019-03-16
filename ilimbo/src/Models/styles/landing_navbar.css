@@ -1,3 +1,7 @@
+.header_button{
+  display: none;
+  color: aliceblue;
+}
 .collapse button div{
   padding: 7px !important;
   margin-right: 0 !important;
@@ -36,9 +40,7 @@
 .nav.navbar-nav.navbar-text-color button span{
   color: white;
 }
-.bg{
-  background: rebeccapurple;
-}
+
 nav{
   display: block;
 }
@@ -49,7 +51,7 @@ nav{
 }
 .navbar {
   margin-bottom: 0;
-  border-bottom: 1px solid rgba(255,255,255,.3);
+  /* border-bottom: 1px solid rgba(255,255,255,.3); */
 
 }
 ul.navbar-nav-bg {
@@ -69,8 +71,11 @@ ul.navbar-nav-bg {
   padding-left: 15px;
   padding-right: 15px;
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-between;
 }
+
 .collapse{
   align-self: center;
 }
@@ -163,7 +168,20 @@ ul.navbar-nav-bg {
 @media (max-width: 768px){
 .navbar, .navbar-nav {
     background: #67b0d1 !important;
-}}
+}
+.header_button{
+  display: block;
+}
+.navbar-collapse{
+  display: none;
+}
+.navbar-header{
+  flex: 1 90%;
+}
+.header_button{
+  flex: 1 10%;
+}
+}
 @media (min-width: 768px) {
   .navbar-nav {
     float: left;

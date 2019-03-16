@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './styles/landing_header.css'
 import LandingNavbar from './landing_navbar'
+import './styles/common.css'
 
 
 class LandingHeader extends Component {
@@ -13,7 +14,7 @@ class LandingHeader extends Component {
             <h1>Get One Hacker News Article Everyday</h1>
             <h3>Placeholder</h3>
             <div className="landing-scroll-down">
-              <a href="#service">
+              <a onClick={() => document.getElementById("article").scrollIntoView()}>
                 <div className="landing-circle-btn"><div className="arrow-down">&#10515;</div>
                 </div>
               </a>
