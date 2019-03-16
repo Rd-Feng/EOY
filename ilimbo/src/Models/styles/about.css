@@ -1,29 +1,56 @@
+.about-invisible{
+  visibility: hidden;
+  padding: 0;
+  margin: 0%;
+}
+.developers{
+  text-align: center;
+  color: gray;
+  text-transform: uppercase;
+  font-size: 40px;
+}
+.app-description{
+  text-align: center;
+  font-family: Montserrat,sans-serif;
+}
+.app-description h1{
+  color: gray;
+  font-size: 40px;
+  text-transform: uppercase;
+  font-weight: 400;
+  margin-top: 5%;
+}
+.app-description p{
+  padding: 0% 5% 0% 5%;
+  font-weight: 100;
+  font-size: 18px;
+}
 .meet-the-team {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+  display: flex;
+  justify-content: space-around;
 }
 
 .team-card-animated {
-    width: 20%;
-    height: 100%;
-    text-align: center;
-    margin: 5%;
-    background-color: yellow;
-    animation-name: bounce-in-top;
-    animation-duration: 1.5s;
+  text-transform: uppercase;
+  font-family: Montserrat,sans-serif;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: gray;
+  width: 20%;
+  height: 100%;
+  text-align: center;
+  /* background-color:hsl(0, 0%, 97%); */
+  animation-name: bounce-in-top;
+  animation-duration: 1.5s;
+  display: block;
+}
+.team-card-animated img{
+  border-radius: 50%;
+  width: 90%;
 }
 
 .team-card {
-    width: 20%;
-    height: 100%;
-    text-align: center;
-    margin: 5%;
-    background-color: yellow;
-}
-
-.developers {
-    font-size: 40px;
+  display: none;
 }
 
 @keyframes bounce-in-top {
