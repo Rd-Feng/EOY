@@ -1,6 +1,5 @@
 const express = require('express');
 const mysql = require('mysql');
-const bcrypt = require('bcrypt');
 
 const router = express.Router();
 const connection = (() => {
@@ -38,6 +37,20 @@ router.post('/user', (req, res) => {
       res.send({status: 'failed'});
     } else {
       return res.json({status: 'success'});
+    }
+  });
+});
+
+router.put('/user', (req, res) => {
+  const { id,  github, linkedin, twitter } = req.body;
+  connection.query('UPDATE users SET github=' + connection.escape(github) +
+                                  ', linkedin=' + connection.escape(linkedin) +
+                                  ', twitter=' + connection.escape(twitter) +
+                                  ' WHERE id=' + connection.escape(id), (err) => {
+    if (err) {
+      res.send({status: 'failed'});
+    } else {
+      res.send({status: 'success'});
     }
   });
 });
