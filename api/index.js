@@ -28,6 +28,7 @@ app.use(bodyParser.json());
 app.use(require('./comments'));
 app.use(require('./subcomments'));
 app.use(require('./users'));
+app.use(require('./likes'));
 
 // const TEST = schedule.scheduleJob('0 * * * * *', () => {
 //   const GET_PAST_ITEMS = 'SELECT id FROM items';
