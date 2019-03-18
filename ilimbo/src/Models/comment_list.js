@@ -11,7 +11,7 @@ class CommentList extends Component {
     }
   }
   componentDidMount() {
-    fetch('http://localhost:4000/comments')
+    fetch('http://localhost:4000/comments/' +  '123456')
       .then(response => response.json())
       .then(response => {
         this.setState({ comment_list: response.data });
