@@ -35,4 +35,19 @@ router.get('/comment/:id', (req, res) => {
   });
 });
 
+router.post('/comment', (req, res) => {
+  const { text, creator, item_id } = req.body;
+  connection.query('INSERT INTO comments (text, creator, item_id) VALUES (' +
+                    connection.escape(text) + ', ' +
+                    connection.escape(creator) + ', ' +
+                    connection.escape(item_id) +')', (err, results) => {
+    if (err) {
+      console.log(err);
+      res.send({status: 'failed'});
+    } else {
+      return res.json({status: 'success'});
+    }
+  });
+});
+
 module.exports = router;
