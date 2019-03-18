@@ -25,37 +25,39 @@ const connection = (() => {
 app.use(cors());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+app.use(require('./comments'));
+app.use(require('./users'));
 
-const TEST = schedule.scheduleJob('0 * * * * *', () => {
-  const GET_PAST_ITEMS = 'SELECT id FROM items';
-  connection.query(GET_PAST_ITEMS, (err, results) => {
-    if (err) {
-      console.log(err);
-    } else {
-      let history = [];
-      results.map(result => history.push(result.id));
-      request('https://hacker-news.firebaseio.com/v0/topstories.json', (err, response, body) => {
-        if (err) {
-          console.log(err);
-        } else {
-          let top_items = JSON.parse(body);
-          for (let item of top_items) {
-            if (!history.includes(String(item))) {
-              connection.query('INSERT INTO items (id) VALUES (' + connection.escape(String(item)) + ')', (err, results) => {
-                if (err) {
-                  console.log(err);
-                } else {
-                  ARTICLE_TODAY = String(item);
-                }
-              });
-              break;
-            }
-          }
-        }
-      });
-    }
-  })
-});
+// const TEST = schedule.scheduleJob('0 * * * * *', () => {
+//   const GET_PAST_ITEMS = 'SELECT id FROM items';
+//   connection.query(GET_PAST_ITEMS, (err, results) => {
+//     if (err) {
+//       console.log(err);
+//     } else {
+//       let history = [];
+//       results.map(result => history.push(result.id));
+//       request('https://hacker-news.firebaseio.com/v0/topstories.json', (err, response, body) => {
+//         if (err) {
+//           console.log(err);
+//         } else {
+//           let top_items = JSON.parse(body);
+//           for (let item of top_items) {
+//             if (!history.includes(String(item))) {
+//               connection.query('INSERT INTO items (id) VALUES (' + connection.escape(String(item)) + ')', (err, results) => {
+//                 if (err) {
+//                   console.log(err);
+//                 } else {
+//                   ARTICLE_TODAY = String(item);
+//                 }
+//               });
+//               break;
+//             }
+//           }
+//         }
+//       });
+//     }
+//   })
+// });
 
 app.post('/verify', (req, res) => {
   const { token } = req.body;
@@ -71,7 +73,26 @@ app.post('/verify', (req, res) => {
     email: data.email,
     img_url: data.picture
   })
-  .then(data => res.send(data))
+  .then(data => {
+    request.get('http://localhost:4000/user/' + data.id, (error, response, body) => {
+      if (error) {
+        console.log(error);
+      } else {
+        if (!JSON.parse(body).data.length) {
+          request.post({
+            headers: {'content-type' : 'application/json'},
+            url:     'http://localhost:4000/user',
+            body:    JSON.stringify(data)
+          }, (error, response, body) => {
+            console.log('user added:::', data.id);
+          });
+        } else {
+          console.log('user already exists:::', data.id)
+        }
+      }
+    });
+    res.send(data)
+  })
   .catch(err => res.send({err: 'Invalid token'}))
 });
 
