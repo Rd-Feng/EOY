@@ -50,7 +50,7 @@
 }
 
 .team-card {
-  display: none;
+  visibility: hidden;
 }
 
 @keyframes bounce-in-top {

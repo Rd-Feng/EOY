@@ -5,7 +5,11 @@ import GoogleLogin from 'react-google-login';
 class OAuth extends Component {
   render() {
     const responseGoogle = (response) => {
+      let profile = response.getBasicProfile();
       console.log(response.getAuthResponse().id_token);
+      localStorage.setItem("id_token", JSON.stringify(response.getAuthResponse().id_token));
+      localStorage.setItem("ImgUrl", JSON.stringify(profile.getImageUrl()));
+      localStorage.setItem("Fullname", JSON.stringify(profile.getName()));
     }
     return (
       <GoogleLogin
