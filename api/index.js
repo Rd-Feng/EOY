@@ -31,10 +31,10 @@ app.post('/signin', (req, res) => {
   })
   .then(data => res.send(data))
   .catch(err => res.send({err: 'Invalid token'}))
-})
+});
 
 app.get('/', (req, res) => {
   res.send(`Hello from port ${PORT}`)
-})
+});
 
 app.listen(PORT);
