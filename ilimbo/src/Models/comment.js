@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import InfiniteScroll from 'react-infinite-scroller';
 import './styles/comment.css';
 import CommentInputbox from './comment_inputbox';
-import CommentBox from './comment_box';
+import CommentList from './comment_list';
 
 
 
@@ -12,7 +12,7 @@ class Comment extends Component {
     this.state = {
     }
   }
-  
+
   render() {
     return (
       <div className="comment-component">
@@ -20,16 +20,16 @@ class Comment extends Component {
           <p className="comment-invisible">about us invisible text for scrolling down</p>
           <h1>Article Title</h1>
         </div>
-       <CommentInputbox/>
-       <CommentBox/>
-       <p>sds</p>
-       <p>sds</p>
-       <p>sds</p>
-       <p>sds</p>
-       <p>sds</p>
-       <p>sds</p>
-       <p>sds</p>
-       <p>sds</p>
+        <CommentInputbox />
+        <CommentList />
+        <p>sds</p>
+        <p>sds</p>
+        <p>sds</p>
+        <p>sds</p>
+        <p>sds</p>
+        <p>sds</p>
+        <p>sds</p>
+        <p>sds</p>
       </div>
     )
   }

@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import InfiniteScroll from 'react-infinite-scroller';
 import './styles/comment_box.css';
-
 
 
 class Like extends Component {
@@ -10,7 +8,7 @@ class Like extends Component {
     this.state = {
       like_color: {},
       check_like: false,
-      like: this.props.like
+      likes: this.props.likes
     }
   }
   handleLike() {
@@ -27,7 +25,7 @@ class Like extends Component {
       <i
         style={this.state.like_color}
         onClick={() => { this.handleLike(); }}
-      >&hearts; {this.state.like}</i>
+      >&hearts; {this.state.likes}</i>
     )
   }
 }
