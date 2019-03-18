@@ -12,6 +12,7 @@
 .app-description{
   text-align: center;
   font-family: Montserrat,sans-serif;
+  margin-bottom: 5%;
 }
 .app-description h1{
   color: gray;
@@ -50,12 +51,12 @@
 }
 
 .team-card {
-  visibility: hidden;
+  display: none;
 }
 
 @keyframes bounce-in-top {
   0% {
-    transform: translateY(-500px);
+    transform: translateY(-550px);
     animation-timing-function: ease-in;
     opacity: 0;
   }
@@ -65,7 +66,7 @@
     opacity: 1;
   }
   55% {
-    transform: translateY(-65px);
+    transform: translateY(-75px);
     animation-timing-function: ease-in;
   }
   72% {
@@ -73,7 +74,7 @@
     animation-timing-function: ease-out;
   }
   81% {
-    transform: translateY(-28px);
+    transform: translateY(-30px);
     animation-timing-function: ease-in;
   }
   90% {
@@ -81,7 +82,7 @@
     animation-timing-function: ease-out;
   }
   95% {
-    transform: translateY(-8px);
+    transform: translateY(-5px);
     animation-timing-function: ease-in;
   }
   100% {

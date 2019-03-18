@@ -11,7 +11,7 @@ class About extends Component {
     this.handleScroll = this.handleScroll.bind(this);
   }
   handleScroll() {
-    if (window.pageYOffset > 400) {
+    if (window.pageYOffset > 500) {
       this.setState({ isScroll: true })
     }
     else {
@@ -31,7 +31,7 @@ class About extends Component {
         <div className="app-description">
           <p className="about-invisible">about us invisible text for scrolling down</p>
           <h1>Mission</h1>
-          <p> This application was created with the intent of bringing developers together by offering a common topic of discussion. Here at Limbo, we believe less is more. Users will be given a popular article sourced from HackerNews. From there, users can choose to read, comment, and connect with other users to expand their professional network. Enjoy.</p>
+          <p> This application was created with the intent of bringing developers together by offering a common topic of discussion. Here at Limbo, we believe less is more. Users are given a popular article sourced from HackerNews. From there, users can choose to read, comment, and connect with other users to expand their professional network. Enjoy.</p>
         </div>
         <div className="developers"> Developers </div>
         <div className="meet-the-team">
