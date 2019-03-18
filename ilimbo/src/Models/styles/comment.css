@@ -1,0 +1,12 @@
+.comment-invisible{
+  visibility: hidden;
+}
+.comment-title h1{
+  text-align: center;
+  color: gray;
+  font-size: 40px;
+  text-transform: uppercase;
+  font-weight: 400;
+  margin-top: 5%;
+  box-sizing: border-box;
+}

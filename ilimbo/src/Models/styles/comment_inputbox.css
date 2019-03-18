@@ -1,0 +1,47 @@
+.comment_container{
+  margin: 0 auto;
+  width: 60%;
+}
+.comment_inputbox_container{
+  display: flex;
+  justify-content: center;
+}
+/* .comment_button_container img{
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+} */
+.comment_container textarea{
+  overflow:hidden;
+  padding:10px;
+  width:100%;
+  font-size:14px;
+  display:block;
+  border-radius:10px;
+  border:6px solid #556677;
+  outline: none !important;
+  margin-left:5px;
+}
+.comment_button_container{
+  text-align: right;
+}
+.comment_cancel_button, .comment_submit_button{
+  margin: 1%;
+  outline: none !important;
+}
+.comment_cancel_button{
+  border: none;
+  padding: 1%;
+}
+.comment_cancel_button:hover{
+  color: #556677;
+}
+.comment_submit_button{
+  border: none;
+  background-color: powderblue;
+  border-radius: 3px;
+  padding: 1%;
+}
+.comment_submit_button:hover{
+  background: orange;
+}
