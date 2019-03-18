@@ -1,0 +1,210 @@
+.header_button{
+  display: none;
+  color: aliceblue;
+}
+.collapse button div{
+  padding: 7px !important;
+  margin-right: 0 !important;
+  background-color: transparent !important;
+}
+.collapse button span{
+  padding: 5px !important;
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: #444;
+  text-transform: uppercase;
+  font-weight: 700 !important;
+}
+.collapse button:hover{
+  outline: 0 !important;
+  background-color: rgba(255,255,255,.2) !important;
+}
+/* remove default blue outline */
+.collapse button:focus {
+  outline: none !important;
+}
+.collapse button{
+  border: none !important;
+  box-shadow: none !important;
+  background-color: transparent !important;
+}
+.navbar-container h1{
+  margin: 0;
+}
+.navbar-container a{
+ text-decoration: none;
+}
+.nav.navbar-nav.navbar-text-color a{
+  color: white;
+}
+.nav.navbar-nav.navbar-text-color button span{
+  color: white;
+}
+
+nav{
+  display: block;
+}
+.nav{
+  margin-bottom: 0;
+  padding-left: 0;
+  list-style: none;
+}
+.navbar {
+  margin-bottom: 0;
+  /* border-bottom: 1px solid rgba(255,255,255,.3); */
+
+}
+ul.navbar-nav-bg {
+  background-color: rgba(255,255,255,.4);
+}
+.navbar-fixed-top {
+  top: 0;
+  border-width: 0 0 1px;
+}
+.navbar.top-nav-collapse {
+  background-color: #67b0d1;
+  padding: 0;
+}
+.navbar-container {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.collapse{
+  align-self: center;
+}
+.navbar-header a{
+  text-decoration: none;
+}
+.navbar-brand h1 {
+  color: #fff;
+  font-size: 20px;
+  line-height: 40px;
+}
+.navbar-custom ul.nav li a {
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: #444;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.navbar-custom .nav li a:hover, .navbar-custom .nav li a:focus, .navbar-custom .nav li.active {
+  outline: 0;
+  background-color: rgba(255,255,255,.2);
+}
+.navbar-custom .nav li a {
+  -webkit-transition: background .3s ease-in-out;
+  -moz-transition: background .3s ease-in-out;
+  transition: background .3s ease-in-out;
+}
+.nav>li>a {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+}
+
+.nav>li {
+  position: relative;
+  display: block;
+}
+.navbar-fixed-top,
+.navbar-fixed-bottom {
+  position: fixed;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+}
+.navbar-brand h1 {
+  color: #fff;
+  font-size: 20px;
+  line-height: 40px;
+}
+@media (min-width: 768px){
+.navbar-nav>li {
+    float: left;
+}
+}
+@media (min-width: 768px) {
+  .navbar-fixed-top,
+  .navbar-fixed-bottom {
+    border-radius: 0;
+  }
+}
+@media (max-width:480px) {
+
+	.navbar-custom .nav.navbar-nav {
+    background-color: rgba(255,255,255,.4);
+	}
+
+	.navbar.navbar-custom.navbar-fixed-top {
+		margin-bottom: 30px;
+	}
+
+}
+
+@media(min-width:767px) {
+
+  .navbar {
+      padding: 20px 0;
+      border-bottom: 0;
+      letter-spacing: 1px;
+      background: 0 0;
+      -webkit-transition: background .5s ease-in-out,padding .5s ease-in-out;
+      -moz-transition: background .5s ease-in-out,padding .5s ease-in-out;
+      transition: background .5s ease-in-out,padding .5s ease-in-out;
+  }
+
+  .navbar-custom.top-nav-collapse {
+      border-bottom: 1px solid rgba(255,255,255,.3);
+  }
+
+}
+@media (max-width: 768px){
+.navbar, .navbar-nav {
+    background: #67b0d1 !important;
+}
+.header_button{
+  display: block;
+}
+.navbar-collapse{
+  display: none;
+}
+.navbar-header{
+  flex: 1 90%;
+}
+.header_button{
+  flex: 1 10%;
+}
+}
+@media (min-width: 768px) {
+  .navbar-nav {
+    float: left;
+    margin: 0;
+}
+  .navbar-collapse {
+    width: auto;
+    border-top: 0;
+    box-shadow: none;
+  }
+  .navbar-collapse.collapse {
+    display: block !important;
+    height: auto !important;
+    padding-bottom: 0;
+    overflow: visible !important;
+  }
+  .navbar-collapse.in {
+    overflow-y: visible;
+  }
+  .navbar-fixed-top .navbar-collapse,
+  .navbar-static-top .navbar-collapse,
+  .navbar-fixed-bottom .navbar-collapse {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
