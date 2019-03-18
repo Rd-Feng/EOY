@@ -13,8 +13,8 @@ const connection = (() => {
   });
 })();
 
-router.get('/comments/:item_id', (req, res) => {
-  connection.query('SELECT * FROM comments WHERE item_id=' + connection.escape(req.params.item_id), (err, results) => {
+router.get('/subcomments', (req, res) => {
+  connection.query('SELECT * FROM subcomments', (err, results) => {
     if (err) {
       console.log(err);
       res.send({status: 'failed'});
@@ -24,8 +24,19 @@ router.get('/comments/:item_id', (req, res) => {
   });
 });
 
-router.get('/comment/:id', (req, res) => {
-  connection.query('SELECT * FROM comments WHERE id=' + connection.escape(req.params.id), (err, results) => {
+router.get('/subcomments/:comment_id', (req, res) => {
+  connection.query('SELECT * FROM subcomments WHERE comment_id=' + connection.escape(req.params.comment_id), (err, results) => {
+    if (err) {
+      console.log(err);
+      res.send({status: 'failed'});
+    } else {
+      return res.json({data: results});
+    }
+  });
+});
+
+router.get('/subcomment/:id', (req, res) => {
+  connection.query('SELECT * FROM subcomments WHERE id=' + connection.escape(req.params.id), (err, results) => {
     if (err) {
       console.log(err);
       res.send({status: 'failed'});

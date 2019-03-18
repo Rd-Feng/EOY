@@ -26,6 +26,7 @@ app.use(cors());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(require('./comments'));
+app.use(require('./subcomments'));
 app.use(require('./users'));
 
 // const TEST = schedule.scheduleJob('0 * * * * *', () => {
