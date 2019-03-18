@@ -1,6 +1,5 @@
 const express = require('express');
 const mysql = require('mysql');
-const bcrypt = require('bcrypt');
 
 const router = express.Router();
 const connection = (() => {
