@@ -23,10 +23,8 @@ app.use(cors());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-app.post('/signin', (req, res) => {
+app.post('/verify', (req, res) => {
   const { token } = req.body;
-  console.log(token);
-  let data;
   client.verifyIdToken({
       idToken: token,
       audience: CLIENT_ID
