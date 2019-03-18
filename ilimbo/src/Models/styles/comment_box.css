@@ -1,3 +1,13 @@
+.comment-box-container button{
+	margin-left: 88px;
+	clear: both;
+	border: none;
+	background-color: transparent;
+	outline: none !important;
+}
+.comment-box-container button:hover{
+	color: orangered;
+}
 .comments-container {
 	margin: 60px auto 15px;
 	width: 768px;
@@ -242,7 +252,7 @@
 	box-sizing: border-box;
 }
 
-.comment-box .comment-name.by-author, .comment-box .comment-name.by-author a {color: #03658c;}
+/* .comment-box .comment-name.by-author, .comment-box .comment-name.by-author a {color: #03658c;}
 .comment-box .comment-name.by-author:after {
 	content: 'autor';
 	background: #03658c;
@@ -254,7 +264,7 @@
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 	border-radius: 3px;
-}
+} */
 
 /** =====================
  * Responsive

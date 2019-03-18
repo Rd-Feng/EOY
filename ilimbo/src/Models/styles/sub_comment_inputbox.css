@@ -1,0 +1,44 @@
+.sub_comment_container{
+  margin: 0 auto;
+  width: 90%;
+}
+.sub_comment_inputbox_container{
+  /* display: flex;
+  justify-content: center; */
+}
+
+.sub_comment_container textarea{
+  overflow:hidden;
+  padding:6px;
+  width:100%;
+  font-size:14px;
+  display:block;
+  /* border-radius:10px; */
+  border: none;
+  border-bottom:2px solid #556677;
+  outline: none !important;
+  margin-left:5px;
+}
+.sub_comment_button_container{
+  text-align: right;
+}
+.sub_comment_cancel_button, .sub_comment_submit_button{
+  margin: 1%;
+  outline: none !important;
+}
+.sub_comment_cancel_button{
+  border: none;
+  padding: 1%;
+}
+.sub_comment_cancel_button:hover{
+  color: #556677;
+}
+.sub_comment_submit_button{
+  border: none;
+  background-color: powderblue;
+  border-radius: 3px;
+  padding: 1%;
+}
+.sub_comment_submit_button:hover{
+  background: orange;
+}
