@@ -66,23 +66,20 @@ class CommentInputBox extends Component {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
-      },
+        },
       body: JSON.stringify({
         "text": this.state.comment_message,
         "creator": this.state.id,
-        "item_id": this.state.item_id
+        "item_id": "123456"
       })
     })
-    .then(response => response.json())
-    .then(response => {
-      if (response.status !== 'success')
-      {
-        this.setState({ err_msg: "Error"});
-        let err = new Error();
-        throw err;
-      }
-    })
-    .catch(err => console.log(err))
+    .then(res => res.json())
+    .then(res => {
+      if (res.status === "success")
+        console.log("Sucessfully insertion of comment into DB");
+      else
+      	console.log("Error occurred while inserting comment into DB");
+    })	
   }
   render() {
     return (
