@@ -108,6 +108,7 @@ app.get('/users', (req, res) => {
   const GET_USERS = 'SELECT * FROM users';
   connection.query(GET_USERS, (err, results) => {
     if (err) {
+      console.log(err);
       res.send({status: 'failed'});
     } else {
       return res.json({data: results});
@@ -123,6 +124,7 @@ app.get('/items', (req, res) => {
   const GET_ITEMS = 'SELECT * FROM items';
   connection.query(GET_ITEMS, (err, results) => {
     if (err) {
+      console.log(err);
       res.send({status: 'failed'});
     } else {
       return res.json({data: results});
@@ -134,6 +136,7 @@ app.get('/bookmarks', (req, res) => {
   const GET_BOOKMARKS = 'SELECT * FROM bookmarks';
   connection.query(GET_BOOKMARKS, (err, results) => {
     if (err) {
+      console.log(err);
       res.send({status: 'failed'});
     } else {
       return res.json({data: results});
@@ -145,6 +148,7 @@ app.get('/comments', (req, res) => {
   const GET_COMMENTS = 'SELECT * FROM comments';
   connection.query(GET_COMMENTS, (err, results) => {
     if (err) {
+      console.log(err);
       res.send({status: 'failed'});
     } else {
       return res.json({data: results});
@@ -156,6 +160,7 @@ app.get('/subcomments', (req, res) => {
   const GET_SUBCOMMENTS = 'SELECT * FROM subcomments';
   connection.query(GET_SUBCOMMENTS, (err, results) => {
     if (err) {
+      console.log(err);
       res.send({status: 'failed'});
     } else {
       return res.json({data: results});
@@ -167,6 +172,7 @@ app.get('/connections', (req, res) => {
   const GET_CONNECTIONS = 'SELECT * FROM connections';
   connection.query(GET_CONNECTIONS, (err, results) => {
     if (err) {
+      console.log(err);
       res.send({status: 'failed'});
     } else {
       return res.json({data: results});
