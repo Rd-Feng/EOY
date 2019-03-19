@@ -13,18 +13,23 @@ class CommentList extends Component {
 
   componentDidMount() {
     this.interval = setInterval(() => this.setState({ time: Date.now() }), 1000);
-    console.log(this.interval);
-    fetch('http://localhost:4000/comments/' +  '123456')
+    
+  }
+  componentWillReceiveProps(props){
+    this.setState({article_id: props.article_id}, ()=> this.GetComment()) 
+  }
+  GetComment(){
+    fetch('http://localhost:4000/comments/' +  this.state.article_id)
       .then(response => response.json())
       .then(response => {
         this.setState({ comment_list: response.data });
+        
       });
   }
   componentWillUnmount(){
     clearInterval(this.interval);
   }
   render() {
-    console.log(this.state.comment_list)
     let cards;
     if (this.state.comment_list) {
       cards = this.state.comment_list.map(d => {
