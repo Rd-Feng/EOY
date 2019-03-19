@@ -15,6 +15,11 @@ class BookmarkButton extends Component {
     })
   }
   handleClick() {
+    if (!JSON.parse(localStorage.getItem("id_token"))) {
+      alert("please log in");
+      return;
+    }
+      
     this.checkDuplicateBookmark().then(bool => {
 
       if (bool === "false") {
