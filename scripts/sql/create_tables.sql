@@ -62,7 +62,7 @@ END ;;
 DELIMITER ;;
 CREATE TRIGGER `subcomments_uuid`
 BEFORE INSERT ON `subcomments` FOR EACH ROW
-BEGIN 
+BEGIN
   IF new.id IS NULL THEN
     SET new.id = uuid();
   END IF;
