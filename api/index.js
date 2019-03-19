@@ -32,36 +32,36 @@ app.use(require('./users'));
 app.use(require('./likes'));
 app.use(require('./connections'));
 
-// const TEST = schedule.scheduleJob('0 * * * * *', () => {
-//   const GET_PAST_ITEMS = 'SELECT id FROM items';
-//   connection.query(GET_PAST_ITEMS, (err, results) => {
-//     if (err) {
-//       console.log(err);
-//     } else {
-//       let history = [];
-//       results.map(result => history.push(result.id));
-//       request('https://hacker-news.firebaseio.com/v0/topstories.json', (err, response, body) => {
-//         if (err) {
-//           console.log(err);
-//         } else {
-//           let top_items = JSON.parse(body);
-//           for (let item of top_items) {
-//             if (!history.includes(String(item))) {
-//               connection.query('INSERT INTO items (id) VALUES (' + connection.escape(String(item)) + ')', (err, results) => {
-//                 if (err) {
-//                   console.log(err);
-//                 } else {
-//                   ARTICLE_TODAY = String(item);
-//                 }
-//               });
-//               break;
-//             }
-//           }
-//         }
-//       });
-//     }
-//   })
-// });
+const TEST = schedule.scheduleJob('0 0 13 * * *', () => {
+  const GET_PAST_ITEMS = 'SELECT id FROM items';
+  connection.query(GET_PAST_ITEMS, (err, results) => {
+    if (err) {
+      console.log(err);
+    } else {
+      let history = [];
+      results.map(result => history.push(result.id));
+      request('https://hacker-news.firebaseio.com/v0/topstories.json', (err, response, body) => {
+        if (err) {
+          console.log(err);
+        } else {
+          let top_items = JSON.parse(body);
+          for (let item of top_items) {
+            if (!history.includes(String(item))) {
+              connection.query('INSERT INTO items (id) VALUES (' + connection.escape(String(item)) + ')', (err, results) => {
+                if (err) {
+                  console.log(err);
+                } else {
+                  ARTICLE_TODAY = String(item);
+                }
+              });
+              break;
+            }
+          }
+        }
+      });
+    }
+  })
+});
 
 app.post('/verify', (req, res) => {
   const { token } = req.body;
@@ -108,6 +108,7 @@ app.get('/users', (req, res) => {
   const GET_USERS = 'SELECT * FROM users';
   connection.query(GET_USERS, (err, results) => {
     if (err) {
+      console.log(err);
       res.send({status: 'failed'});
     } else {
       return res.json({data: results});
@@ -123,6 +124,7 @@ app.get('/items', (req, res) => {
   const GET_ITEMS = 'SELECT * FROM items';
   connection.query(GET_ITEMS, (err, results) => {
     if (err) {
+      console.log(err);
       res.send({status: 'failed'});
     } else {
       return res.json({data: results});
@@ -134,6 +136,7 @@ app.get('/bookmarks', (req, res) => {
   const GET_BOOKMARKS = 'SELECT * FROM bookmarks';
   connection.query(GET_BOOKMARKS, (err, results) => {
     if (err) {
+      console.log(err);
       res.send({status: 'failed'});
     } else {
       return res.json({data: results});
@@ -145,6 +148,7 @@ app.get('/comments', (req, res) => {
   const GET_COMMENTS = 'SELECT * FROM comments';
   connection.query(GET_COMMENTS, (err, results) => {
     if (err) {
+      console.log(err);
       res.send({status: 'failed'});
     } else {
       return res.json({data: results});
@@ -156,6 +160,7 @@ app.get('/subcomments', (req, res) => {
   const GET_SUBCOMMENTS = 'SELECT * FROM subcomments';
   connection.query(GET_SUBCOMMENTS, (err, results) => {
     if (err) {
+      console.log(err);
       res.send({status: 'failed'});
     } else {
       return res.json({data: results});
@@ -167,6 +172,7 @@ app.get('/connections', (req, res) => {
   const GET_CONNECTIONS = 'SELECT * FROM connections';
   connection.query(GET_CONNECTIONS, (err, results) => {
     if (err) {
+      console.log(err);
       res.send({status: 'failed'});
     } else {
       return res.json({data: results});

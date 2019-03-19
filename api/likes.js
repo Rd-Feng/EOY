@@ -22,7 +22,7 @@ router.get('/comment/:id/like', (req, res) => {
       res.send({status: 'success'});
     }
   });
-})
+});
 
 router.get('/comment/:id/unlike', (req, res) => {
   connection.query('UPDATE comments SET likes=likes-1 WHERE id=' + connection.escape(req.params.id), (err) => {
@@ -33,7 +33,7 @@ router.get('/comment/:id/unlike', (req, res) => {
       res.send({status: 'success'});
     }
   });
-})
+});
 
 router.get('/subcomment/:id/like', (req, res) => {
   connection.query('UPDATE subcomments SET likes=likes+1 WHERE id=' + connection.escape(req.params.id), (err) => {
@@ -44,7 +44,7 @@ router.get('/subcomment/:id/like', (req, res) => {
       res.send({status: 'success'});
     }
   });
-})
+});
 
 router.get('/subcomment/:id/unlike', (req, res) => {
   connection.query('UPDATE subcomments SET likes=likes-1 WHERE id=' + connection.escape(req.params.id), (err) => {
@@ -55,6 +55,6 @@ router.get('/subcomment/:id/unlike', (req, res) => {
       res.send({status: 'success'});
     }
   });
-})
+});
 
 module.exports = router;
