@@ -1,0 +1,92 @@
+.about-invisible{
+  visibility: hidden;
+  padding: 0;
+  margin: 0%;
+}
+.developers{
+  text-align: center;
+  color: gray;
+  text-transform: uppercase;
+  font-size: 40px;
+}
+.app-description{
+  text-align: center;
+  font-family: Montserrat,sans-serif;
+  margin-bottom: 5%;
+}
+.app-description h1{
+  color: gray;
+  font-size: 40px;
+  text-transform: uppercase;
+  font-weight: 400;
+  margin-top: 5%;
+}
+.app-description p{
+  padding: 0% 5% 0% 5%;
+  font-weight: 100;
+  font-size: 18px;
+}
+.meet-the-team {
+  display: flex;
+  justify-content: space-around;
+}
+
+.team-card-animated {
+  text-transform: uppercase;
+  font-family: Montserrat,sans-serif;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: gray;
+  width: 20%;
+  height: 100%;
+  text-align: center;
+  /* background-color:hsl(0, 0%, 97%); */
+  animation-name: bounce-in-top;
+  animation-duration: 1.5s;
+  display: block;
+}
+.team-card-animated img{
+  border-radius: 50%;
+  width: 90%;
+}
+
+.team-card {
+  display: none;
+}
+
+@keyframes bounce-in-top {
+  0% {
+    transform: translateY(-550px);
+    animation-timing-function: ease-in;
+    opacity: 0;
+  }
+  38% {
+    transform: translateY(0);
+    animation-timing-function: ease-out;
+    opacity: 1;
+  }
+  55% {
+    transform: translateY(-75px);
+    animation-timing-function: ease-in;
+  }
+  72% {
+    transform: translateY(0);
+    animation-timing-function: ease-out;
+  }
+  81% {
+    transform: translateY(-30px);
+    animation-timing-function: ease-in;
+  }
+  90% {
+    transform: translateY(0);
+    animation-timing-function: ease-out;
+  }
+  95% {
+    transform: translateY(-5px);
+    animation-timing-function: ease-in;
+  }
+  100% {
+    transform: translateY(0);
+    animation-timing-function: ease-out;
+  }
+}

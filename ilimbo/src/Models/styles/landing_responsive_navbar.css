@@ -1,0 +1,123 @@
+.res_collapse button div{
+  padding: 7px !important;
+  margin-right: 0 !important;
+  background-color: transparent !important;
+}
+.res_collapse button span{
+  padding: 5px !important;
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: #444;
+  text-transform: uppercase;
+  font-weight: 700 !important;
+}
+.res_collapse button:hover{
+  outline: 0 !important;
+  background-color: rgba(255,255,255,.2) !important;
+}
+/* remove default blue outline */
+.res_collapse button:focus {
+  outline: none !important;
+}
+.res_collapse button{
+  border: none !important;
+  box-shadow: none !important;
+  background-color: transparent !important;
+}
+
+.res_nav.res_navbar-nav.res_navbar-text-color a{
+  color: white;
+}
+.res_nav.res_navbar-nav.res_navbar-text-color button span{
+  color: white;
+}
+
+.res_nav{
+  margin-bottom: 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.res_collapse{
+  align-self: center;
+}
+
+.res_collapse ul.res_nav li a {
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: #444;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.res_collapse .res_nav li a:hover, .res_collapse .res_nav li a:focus, .res_collapse .res_nav li.res_active {
+  outline: 0;
+  background-color: rgba(255,255,255,.2);
+}
+.res_collapse .res_nav li a {
+  -webkit-transition: background .3s ease-in-out;
+  -moz-transition: background .3s ease-in-out;
+  transition: background .3s ease-in-out;
+}
+.res_nav>li>a {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+}
+
+.res_nav>li {
+  position: relative;
+  display: block;
+}
+
+
+@media (min-width: 768px){
+.res_navbar-nav>li {
+    float: left;
+}
+.res_collapse{
+  display: none;
+}
+}
+
+@media (max-width:480px) {
+
+	.res_collapse .res_nav.res_navbar-nav {
+    background-color: rgba(255,255,255,.4);
+	}
+
+
+}
+
+@media (max-width: 768px){
+  
+/* .res_navbar-nav {
+    background: #67b0d1 !important;
+}
+
+}
+@media (min-width: 768px) {
+  .res_navbar-nav {
+    float: left;
+    margin: 0;
+}
+  .res_navbar-collapse {
+    width: auto;
+    border-top: 0;
+    box-shadow: none;
+  }
+  .res_navbar-collapse.res_collapse {
+    display: block !important;
+    height: auto !important;
+    padding-bottom: 0;
+    overflow: visible !important;
+  }
+  .res_navbar-collapse.in {
+    overflow-y: visible;
+  }
+  .res_navbar-collapse,
+  .navbar-static-top .res_navbar-collapse,
+  .res_navbar-collapse {
+    padding-right: 0;
+    padding-left: 0;
+  } */
+}
