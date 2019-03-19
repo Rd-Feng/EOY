@@ -11,7 +11,7 @@ class About extends Component {
     this.handleScroll = this.handleScroll.bind(this);
   }
   handleScroll() {
-    if (window.pageYOffset > 500) {
+    if (window.pageYOffset > 1000) {
       this.setState({ isScroll: true })
     }
     else {
