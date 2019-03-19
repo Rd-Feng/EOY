@@ -24,4 +24,28 @@ router.get('/bookmarks/:user_id', (req, res) => {
   });
 });
 
+router.post('/bookmark/add', (req, res) => {
+  const { user_id, item_id } = req.body;
+  connection.query(`INSERT INTO bookmarks (user_id, item_id) VALUES (${connection.escape(user_id)}, ${connection.escape(item_id)})`, (err, results) => {
+    if (err) {
+      console.log(err);
+      res.send({status: 'failed'});
+    } else {
+      res.json({data: results});
+    }
+  });
+});
+
+router.post('/bookmark/remove', (req, res) => {
+  const { user_id, item_id } = req.body;
+  connection.query(`DELETE FROM bookmarks WHERE user_id=${connection.escape(user_id)} and item_id=${connection.escape(item_id)}`, (err, results) => {
+    if (err) {
+      console.log(err);
+      res.send({status: 'failed'});
+    } else {
+      res.json({status: 'success'});
+    }
+  });
+});
+
 module.exports = router;
