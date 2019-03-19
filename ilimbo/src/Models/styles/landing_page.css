@@ -1,3 +1,10 @@
 .article_section{
   background-color: lightblue;
 }
+.intro_section{
+  background-color: orangered;
+  margin: -17px;
+}
+.about_section{
+  background-color: white;
+}

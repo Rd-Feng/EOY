@@ -12,10 +12,10 @@ class LandingHeader extends Component {
         <header className="landing_header">
           <div className="landing_slogan_container">
             <h1>Get One Hacker News Article Everyday</h1>
-            <h3>Placeholder</h3>
+            <h3>See Article</h3>
             <div className="landing-scroll-down">
               <a onClick={() => document.getElementById("article").scrollIntoView()}>
-                <div className="landing-circle-btn"><div className="arrow-down">&#10515;</div>
+                <div className="landing-circle-btn"><div className="arrow-down">&#8595;</div>
                 </div>
               </a>
             </div>

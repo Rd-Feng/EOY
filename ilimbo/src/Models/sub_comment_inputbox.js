@@ -47,8 +47,7 @@ class SubCommentInputBox extends Component {
   }
 
   handleComment(){
-    if(this.state.comment_id){
-      
+    if(JSON.parse(localStorage.getItem("id_token"))){     
       fetch('http://localhost:4000/subcomment', {
         method: 'POST',
         headers: {
@@ -57,7 +56,7 @@ class SubCommentInputBox extends Component {
         },
         body: JSON.stringify({
           "text": this.state.sub_comment_message,
-          "creator": this.state.id,
+          "creator": JSON.parse(localStorage.getItem("id_token")),
           "comment_id": this.state.comment_id
         })
       })
@@ -71,6 +70,9 @@ class SubCommentInputBox extends Component {
         }
       })
       .catch(err => console.log(err))
+    }
+    else{
+      alert("Login to comment")
     }
   }
   render() {

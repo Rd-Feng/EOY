@@ -9,9 +9,9 @@ class Landing extends Component {
   render() {
     return (
       <div>
-        <section id="intro"> <LandingHeader /></section>   
-        <section id='about'><About/></section>
-        <section className="article_section" id='article'><Comment/></section>
+        <section id="intro" className="intro_section"> <LandingHeader /></section>   
+        <section  id='article' className="article_section"><Comment/></section>
+        <section id='about' className="about_section"><About/></section>
       </div>
     )
   }

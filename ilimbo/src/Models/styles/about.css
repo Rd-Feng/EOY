@@ -51,7 +51,7 @@
 }
 
 .team-card {
-  display: none;
+  display:hidden;
 }
 
 @keyframes bounce-in-top {

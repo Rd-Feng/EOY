@@ -5,31 +5,33 @@ import CommentInputbox from './comment_inputbox';
 import CommentList from './comment_list';
 
 
-
 class Comment extends Component {
   constructor(props) {
     super(props)
     this.state = {
     }
   }
-
+  componentDidMount() {
+    fetch('http://localhost:4000/article_today')
+      .then(response => response.json())
+      .then(response => {
+        this.setState({ article_id: response.data})
+        fetch('https://hacker-news.firebaseio.com/v0/item/' + response.data + '.json')
+          .then(response => response.json())
+          .then(data => {
+            this.setState({ article_url: data.url, article_title: data.title });
+          })
+      })
+  }
   render() {
     return (
       <div className="comment-component">
+        <p className="comment-invisible">about us invisible text for scrolling down</p>
         <div className="comment-title">
-          <p className="comment-invisible">about us invisible text for scrolling down</p>
-          <h1>Article Title</h1>
+          <a href={this.state.article_url} target="_blank" rel="noopener noreferrer">{this.state.article_title}</a>
         </div>
-        <CommentInputbox />
-        <CommentList />
-        <p>sds</p>
-        <p>sds</p>
-        <p>sds</p>
-        <p>sds</p>
-        <p>sds</p>
-        <p>sds</p>
-        <p>sds</p>
-        <p>sds</p>
+        <CommentInputbox article_id={this.state.article_id}/>
+        <CommentList article_id={this.state.article_id}/>
       </div>
     )
   }

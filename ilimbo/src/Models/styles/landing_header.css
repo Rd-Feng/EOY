@@ -9,6 +9,9 @@
   color: aliceblue;
   text-align: center;
 }
+.landing_slogan_container h3{
+  margin-bottom: 0;
+}
 
 .landing-circle-btn{
   width: 50px;

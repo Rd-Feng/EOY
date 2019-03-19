@@ -19,25 +19,9 @@ class CommentInputBox extends Component {
       comment_message: ''
     }
   }
+
   componentDidMount() {
-    console.log("img", this.state.img_url)
-    console.log("id", this.state.id)
     document.querySelector('textarea').addEventListener('keydown', this.autosize);
-    // fetch('http://localhost:4000/signin=' + this.state.id_token, {
-    //   method: 'POST',
-    //   headers: {
-    //     'Accept': 'application/json',
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify({
-    //     "token": this.state.id_token
-    //   })
-    // })
-    //   .then(response => response.json())
-    //   .then(response =>{
-    //    console.log("data", response.data)
-    //   })
-    //   .catch(err => console.log(err))
   }
   componentWillUnmount() {
     document.querySelector('textarea').removeEventListener('keydown', this.autosize);
@@ -61,6 +45,16 @@ class CommentInputBox extends Component {
     });
   }
   handleComment() {
+    if (JSON.parse(localStorage.getItem("id_token"))){
+      this.setState({article_id: this.props.article_id}, ()=> this.handleCommentPost())
+    }
+    else{
+      alert("Login to comment");
+    }
+   
+  }
+  handleCommentPost(){
+    console.log("kkkkk1", this.state.article_id )
     fetch('http://localhost:4000/comment', {
       method: 'POST',
       headers: {
@@ -69,8 +63,8 @@ class CommentInputBox extends Component {
         },
       body: JSON.stringify({
         "text": this.state.comment_message,
-        "creator": this.state.id,
-        "item_id": "123456"
+        "creator": JSON.parse(localStorage.getItem("id_token")),
+        "item_id": this.state.article_id
       })
     })
     .then(res => res.json())
