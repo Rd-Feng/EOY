@@ -24,7 +24,6 @@ class CommentList extends Component {
     clearInterval(this.interval);
   }
   render() {
-    console.log(this.state.comment_list)
     let cards;
     if (this.state.comment_list) {
       cards = this.state.comment_list.map(d => {

@@ -10,7 +10,6 @@ class CommentBox extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      liked: false
     }
   }
   componentDidMount() {
@@ -46,7 +45,7 @@ class CommentBox extends Component {
                   <h6 className="comment-name by-author">
                     <a href="http://creaticode.com/blog">{d.first_name}{d.last_name}</a>
                   </h6><span>{this.state.created_at}</span>
-                  <Like handler={this.likeHandler} likes={this.state.likes} comment_id={this.state.comment_id}/>
+                  <Like likes={this.state.likes} comment_id={this.state.comment_id}/>
                   <Reply comment_id={this.state.comment_id}/>
                 </div>
                 <div className="comment-content">{this.state.text}

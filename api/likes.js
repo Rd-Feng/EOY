@@ -14,7 +14,6 @@ const connection = (() => {
 })();
 
 router.get('/comment/:id/like', (req, res) => {
-  console.log("im being called")
   connection.query('UPDATE comments SET likes=likes+1 WHERE id=' + connection.escape(req.params.id), (err) => {
     if (err) {
       console.log(err);
@@ -26,7 +25,6 @@ router.get('/comment/:id/like', (req, res) => {
 })
 
 router.get('/comment/:id/unlike', (req, res) => {
-  console.log("im being called")
   connection.query('UPDATE comments SET likes=likes-1 WHERE id=' + connection.escape(req.params.id), (err) => {
     if (err) {
       console.log(err);
@@ -48,5 +46,15 @@ router.get('/subcomment/:id/like', (req, res) => {
   });
 })
 
+router.get('/subcomment/:id/unlike', (req, res) => {
+  connection.query('UPDATE subcomments SET likes=likes-1 WHERE id=' + connection.escape(req.params.id), (err) => {
+    if (err) {
+      console.log(err);
+      res.send({status: 'failed'});
+    } else {
+      res.send({status: 'success'});
+    }
+  });
+})
 
 module.exports = router;
