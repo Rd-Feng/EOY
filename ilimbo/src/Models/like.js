@@ -14,7 +14,6 @@ class Like extends Component {
   }
   
   handleLike() {
-    this.props.handler()
     this.setState({ check_like: !this.state.check_like });
     let numLikes = this.state.likes
     if (!this.state.check_like) {
