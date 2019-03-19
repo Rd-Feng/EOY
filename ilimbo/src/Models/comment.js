@@ -31,7 +31,7 @@ class Comment extends Component {
           <a href={this.state.article_url} target="_blank" rel="noopener noreferrer">{this.state.article_title}</a>
         </div>
         <CommentInputbox article_id={this.state.article_id}/>
-        <CommentList article_id={this.state.article_id}/>
+        <CommentList article_id={(() => {console.log('asdf', this.state.article_id); return this.state.article_id})()}/>
       </div>
     )
   }

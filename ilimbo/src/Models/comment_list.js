@@ -8,22 +8,22 @@ class CommentList extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      article_id: ''
     }
+    this.GetComment = this.GetComment.bind(this);
+    this.interval = setInterval(this.GetComment, 2000);
   }
-
-  componentDidMount() {
-    this.interval = setInterval(() => this.setState({ time: Date.now() }), 1000);
-    
-  }
-  componentWillReceiveProps(props){
-    this.setState({article_id: props.article_id}, ()=> this.GetComment()) 
+  static getDerivedStateFromProps(props, state) {
+    state.article_id = props.article_id;
   }
   GetComment(){
+    if (!this.props.article_id) {
+      return;
+    }
     fetch('http://localhost:4000/comments/' +  this.state.article_id)
       .then(response => response.json())
       .then(response => {
         this.setState({ comment_list: response.data });
-        
       });
   }
   componentWillUnmount(){

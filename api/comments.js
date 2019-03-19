@@ -14,7 +14,7 @@ const connection = (() => {
 })();
 
 router.get('/comments/:item_id', (req, res) => {
-  connection.query('SELECT * FROM comments WHERE item_id=' + connection.escape(req.params.item_id) + ' ORDER BY created_at', (err, results) => {
+  connection.query('SELECT * FROM comments WHERE item_id=' + connection.escape(req.params.item_id) + ' ORDER BY created_at DESC;', (err, results) => {
     if (err) {
       console.log(err);
       res.send({status: 'failed'});
