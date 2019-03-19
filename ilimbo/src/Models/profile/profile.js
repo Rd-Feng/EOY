@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
-import ProfileNavbar from './profile_navbar'
+import NavBar from '../home/navbar'
+import '../home/styles/home.css'
+
 
 
 class Profile extends Component {
   render() {
     return (
-      <div>
-        <ProfileNavbar />
+      <div className='home'>
+        <NavBar />
       </div>
     )
   }

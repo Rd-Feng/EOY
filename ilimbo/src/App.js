@@ -14,6 +14,7 @@ class App extends Component {
           <Route exact={true} path='/' component={Landing} />
           <Route exact={true} path='/home' component={Home} />
           <Route exact={true} path='/bookmark' component={Bookmark} />
+          <Route exact={true} path='/profile/:user_id' component={Profile} />
         </div>
       </BrowserRouter>
     );
