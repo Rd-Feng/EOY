@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Oauth from '../oauth'
 import '../styles/landing_navbar.css'
-import LandingResNavbar from '../landing_responsive_navbar'
+import ResNavbar from './res_navbar'
 import { withRouter } from 'react-router-dom';
 
 
@@ -34,29 +34,39 @@ class Navbar extends Component {
       this.setState({ isScroll: false })
     }
   }
-  handleLogout(){
+  handleLogout() {
     localStorage.clear();
     this.props.history.push('/');
+  }
+  handleBookmark() {
+    this.props.history.push('/bookmark');
+  }
+  handleProfile() {
+    let url =
+      this.props.history.push('/profile/' + JSON.parse(localStorage.getItem("id_token")))
+  }
+  handleHome() {
+    this.props.history.push('/home');
   }
   render() {
     return (
       <div>
         <nav className={(this.state.isScroll) ? 'navbar navbar-custom navbar-fixed-top top-nav-collapse' : 'navbar navbar-custom navbar-fixed-top'} role="navigation">
           <div className="navbar-container">
-            <div  className="navbar-header">
+            <div className="navbar-header">
               <a className="navbar-brand" href="/">
                 <h1>Limbo</h1>
               </a>
             </div>
 
             <div className="header_button" onClick={this.toggleHidden.bind(this)} >
-        <h1>&#9776;</h1></div>{!this.state.isHidden &&  <LandingResNavbar/>}
-             <div className="collapse navbar-collapse">
+              <h1>&#9776;</h1></div>{!this.state.isHidden && <ResNavbar />}
+            <div className="collapse navbar-collapse">
               <ul className={(this.state.isScroll) ? 'nav navbar-nav navbar-text-color' : 'nav navbar-nav navbar-nav-bg'}>
                 <li className="active">
-                <a onClick={() => document.getElementById("intro").scrollIntoView()}>Home</a></li>
-                <li><a onClick={() => document.getElementById("about").scrollIntoView()}>About</a></li>
-                <li><a onClick={() => document.getElementById("article").scrollIntoView()}>Article</a></li>
+                  <a onClick={() => this.handleHome()}>Home</a></li>
+                <li><a onClick={() => this.handleProfile()}>Profile</a></li>
+                <li><a onClick={() => this.handleBookmark()}>Bookmark</a></li>
                 <li><a onClick={() => this.handleLogout()}>Logout</a></li>
               </ul>
             </div>
