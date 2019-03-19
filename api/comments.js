@@ -7,14 +7,14 @@ const connection = (() => {
     host: 'localhost',
     port: 3306,
     user: 'root',
-    password: '',
+    password: 'root',
     database: 'limbo_test',
     connectionLimit: 100
   });
 })();
 
 router.get('/comments/:item_id', (req, res) => {
-  connection.query('SELECT * FROM comments WHERE item_id=' + connection.escape(req.params.item_id), (err, results) => {
+  connection.query('SELECT * FROM comments WHERE item_id=' + connection.escape(req.params.item_id) + ' ORDER BY created_at', (err, results) => {
     if (err) {
       console.log(err);
       res.send({status: 'failed'});

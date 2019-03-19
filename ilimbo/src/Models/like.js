@@ -14,7 +14,6 @@ class Like extends Component {
   }
   
   handleLike() {
-    this.props.handler()
     this.setState({ check_like: !this.state.check_like });
     let numLikes = this.state.likes
     if (!this.state.check_like) {
@@ -28,9 +27,9 @@ class Like extends Component {
       this.decrNumLikes();
     }
   }
-  
   incrNumLikes() {
-    fetch('http://localhost:4000/comment/'+ this.state.comment_id + '/like')
+    let commentType = this.props.isSubcomment ? "subcomment" : "comment";
+    fetch('http://localhost:4000/' + commentType + '/'+ this.state.comment_id + '/like')
     .then(res => res.json())
     .then(res => {
       console.log(res);
@@ -38,7 +37,8 @@ class Like extends Component {
   }
 
   decrNumLikes(){
-    fetch('http://localhost:4000/comment/'+ this.state.comment_id + '/unlike')
+    let commentType = this.props.isSubcomment ? "subcomment" : "comment";
+    fetch('http://localhost:4000/'+ commentType + '/'+ this.state.comment_id + '/unlike')
     .then(res => res.json())
     .then(res => {
       console.log(res);
@@ -49,7 +49,7 @@ class Like extends Component {
     return (
       <i
         style={this.state.like_color}
-        onClick={() => { this.handleLike(); }}
+        onClick={() => {this.handleLike(); }}
       >&hearts; {this.state.likes}</i>
     )
   }

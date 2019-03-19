@@ -7,7 +7,7 @@ const connection = (() => {
     host: 'localhost',
     port: 3306,
     user: 'root',
-    password: '',
+    password: 'root',
     database: 'limbo_test',
     connectionLimit: 100
   });
@@ -42,7 +42,7 @@ router.post('/user', (req, res) => {
 });
 
 router.put('/user', (req, res) => {
-  const { id,  github, linkedin, twitter } = req.body;
+  const { id, github, linkedin, twitter } = req.body;
   connection.query('UPDATE users SET github=' + connection.escape(github) +
                                   ', linkedin=' + connection.escape(linkedin) +
                                   ', twitter=' + connection.escape(twitter) +
