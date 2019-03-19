@@ -32,36 +32,36 @@ app.use(require('./users'));
 app.use(require('./likes'));
 app.use(require('./connections'));
 
-// const TEST = schedule.scheduleJob('0 * * * * *', () => {
-//   const GET_PAST_ITEMS = 'SELECT id FROM items';
-//   connection.query(GET_PAST_ITEMS, (err, results) => {
-//     if (err) {
-//       console.log(err);
-//     } else {
-//       let history = [];
-//       results.map(result => history.push(result.id));
-//       request('https://hacker-news.firebaseio.com/v0/topstories.json', (err, response, body) => {
-//         if (err) {
-//           console.log(err);
-//         } else {
-//           let top_items = JSON.parse(body);
-//           for (let item of top_items) {
-//             if (!history.includes(String(item))) {
-//               connection.query('INSERT INTO items (id) VALUES (' + connection.escape(String(item)) + ')', (err, results) => {
-//                 if (err) {
-//                   console.log(err);
-//                 } else {
-//                   ARTICLE_TODAY = String(item);
-//                 }
-//               });
-//               break;
-//             }
-//           }
-//         }
-//       });
-//     }
-//   })
-// });
+const TEST = schedule.scheduleJob('0 0 13 * * *', () => {
+  const GET_PAST_ITEMS = 'SELECT id FROM items';
+  connection.query(GET_PAST_ITEMS, (err, results) => {
+    if (err) {
+      console.log(err);
+    } else {
+      let history = [];
+      results.map(result => history.push(result.id));
+      request('https://hacker-news.firebaseio.com/v0/topstories.json', (err, response, body) => {
+        if (err) {
+          console.log(err);
+        } else {
+          let top_items = JSON.parse(body);
+          for (let item of top_items) {
+            if (!history.includes(String(item))) {
+              connection.query('INSERT INTO items (id) VALUES (' + connection.escape(String(item)) + ')', (err, results) => {
+                if (err) {
+                  console.log(err);
+                } else {
+                  ARTICLE_TODAY = String(item);
+                }
+              });
+              break;
+            }
+          }
+        }
+      });
+    }
+  })
+});
 
 app.post('/verify', (req, res) => {
   const { token } = req.body;
