@@ -8,10 +8,21 @@ class Reply extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      show_reply: false
+      show_reply: false,
+      comment_id: this.props.comment_id
     }
   }
 
+  // componentDidMount() {
+  //   this.setState({
+  //     user_id: this.props.user_id,
+  //     text: this.props.text,
+  //     created_at: this.props.created_at,
+  //     likes: this.props.likes,
+  //     sub_count: this.props.sub_count,
+  //     comment_id: this.props.comment_id
+  //   }, () => this.userInfo());
+  // }
   handleReply() {
     this.setState({ show_reply: !this.state.show_reply });
   }
@@ -22,7 +33,7 @@ class Reply extends Component {
           style={this.state.like_color}
           onClick={() => { this.handleReply(); }}
         >&#x27A6;</i>
-        {this.state.show_reply && <SubCommentInputBox />}
+        {this.state.show_reply && <SubCommentInputBox comment_id={this.state.comment_id}/>}
       </div>
     )
   }

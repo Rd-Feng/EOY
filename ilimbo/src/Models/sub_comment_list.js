@@ -7,6 +7,7 @@ class SubCommentList extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      showSubcomment: false
     }
   }
   componentDidMount() {
@@ -23,6 +24,9 @@ class SubCommentList extends Component {
       });
   }
 
+  handleSubcomment() {
+    this.setState({ showSubcomment: !this.state.showSubcomment })
+  }
   render() {
     let cards;
     if (this.state.sub_comment_info) {
@@ -35,13 +39,16 @@ class SubCommentList extends Component {
             created_at={d.created_at}
             likes={d.likes}
             sub_id={d.id}
+            comment_id={this.state.comment_id}
           />
         )
       })
     }
     return (
-      <div>
-        {cards}
+      <div className="comment-box-container">
+        {this.state.sub_count > 1 && <button onClick={() => { this.handleSubcomment(); }}>view {this.state.sub_count} replies</button>}
+        {this.state.sub_count === 1 && <button onClick={() => { this.handleSubcomment(); }}>view reply</button>}
+        {this.state.showSubcomment && <div>{cards}</div>}
       </div>
     )
   }
