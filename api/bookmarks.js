@@ -13,19 +13,15 @@ const connection = (() => {
   });
 })();
 
-router.get('/bookmarks', (req, res) => {
-  const queryString = "SELECT * FROM bookmarks WHERE user_id=" +
-    connection.escape(connection.query.user_id)
-  connection.query(queryString, (err, results) => {
+router.get('/bookmarks/:user_id', (req, res) => {
+  connection.query(`SELECT * FROM bookmarks WHERE user_id=${req.params.user_id}`, (err, results) => {
     if (err) {
       console.log(err);
       res.send({status: 'failed'});
     } else {
-      res.json({
-        bookmarks: results
-      });
+      res.json({data: results});
     }
   });
-})
+});
 
 module.exports = router;
