@@ -1,0 +1,21 @@
+.bookmark-card {
+  text-align: center;
+  display: block;
+  width: 150px;
+  height: 100px;
+  position: relative;
+  border: 1px #DDDDDD solid;
+  margin: 1%;
+}
+
+.bookmark-card:hover {
+  opacity: 0.8;
+ }
+
+ .bookmark-container {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+ }
+
+
