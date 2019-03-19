@@ -34,6 +34,7 @@ class SubCommentList extends Component {
             text={d.text}
             created_at={d.created_at}
             likes={d.likes}
+            sub_id={d.id}
           />
         )
       })
