@@ -16,7 +16,8 @@ class SubCommentBox extends Component {
       text: this.props.text,
       created_at: this.props.created_at,
       sub_count: this.props.sub_count,
-      likes: this.props.likes
+      likes: this.props.likes,
+      sub_id: this.props.sub_id
     }, () => this.userInfo());
   }
   userInfo() {
@@ -45,7 +46,7 @@ class SubCommentBox extends Component {
                 <h6 className="comment-name by-author">
                   <a href="http://creaticode.com/blog">{d.first_name}{d.last_name}</a>
                 </h6><span>{this.state.created_at}</span>
-                <Like likes={this.state.likes} />
+                <Like likes={this.state.likes} isSubcomment={true} comment_id={this.state.sub_id} />
               </div>
               <div className="comment-content">{this.state.text}
               </div>
