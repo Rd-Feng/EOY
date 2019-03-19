@@ -9,6 +9,17 @@ const CLIENT_ID = '959614478231-rhsbohn77k2664h64phq1v128lqp78l9.apps.googleuser
 const client = new OAuth2Client(CLIENT_ID);
 let ARTICLE_TODAY = '19420532';
 
+var whitelist = ['http://localhost:3000']
+var corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}
+
 const app = express();
 const PORT = process.env.PORT || 4000
 const connection = (() => {
@@ -63,7 +74,7 @@ const TEST = schedule.scheduleJob('0 0 13 * * *', () => {
   })
 });
 
-app.post('/verify', (req, res) => {
+app.post('/verify', cors(corsOptions), (req, res) => {
   const { token } = req.body;
   client.verifyIdToken({
     idToken: token,
