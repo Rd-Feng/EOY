@@ -25,6 +25,9 @@ class OAuth extends Component {
           localStorage.setItem("ImgUrl", JSON.stringify(response.img_url));
           localStorage.setItem("Fullname", JSON.stringify(response.first_name + ' ' + response.last_name));
         })
+      fetch('http://www.ilimbo.space/api/users')
+      .then(response => response.json())
+      .then(response => console.log(response))
     }
     return (
       <GoogleLogin

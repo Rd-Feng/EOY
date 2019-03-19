@@ -25,7 +25,7 @@ router.get('/subcomments', (req, res) => {
 });
 
 router.get('/subcomments/:comment_id', (req, res) => {
-  connection.query('SELECT * FROM subcomments WHERE comment_id=' + connection.escape(req.params.comment_id + ' ORDER BY created_at'), (err, results) => {
+  connection.query('SELECT * FROM subcomments WHERE comment_id=' + connection.escape(req.params.comment_id) + ' ORDER BY created_at', (err, results) => {
     if (err) {
       console.log(err);
       res.send({ status: 'failed' });
