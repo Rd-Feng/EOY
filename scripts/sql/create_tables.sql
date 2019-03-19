@@ -10,16 +10,17 @@ CREATE TABLE IF NOT EXISTS users (
   img_url VARCHAR(128),
   github VARCHAR(128),
   linkedin VARCHAR(128),
-  twitter VARCHAR(128)
+  twitter VARCHAR(128),
+  PRIMARY KEY (id)
 );
 CREATE TABLE IF NOT EXISTS connections (
-  id INT AUTO_INCREMENT,
+  id VARCHAR(36) NOT NULL,
   user_id VARCHAR(36) NOT NULL,
   f_id VARCHAR(36) NOT NULL,
   PRIMARY KEY (id)
 );
 CREATE TABLE IF NOT EXISTS bookmarks (
-  id INT AUTO_INCREMENT,
+  id VARCHAR(36) NOT NULL,
   user_id VARCHAR(36) NOT NULL,
   item_id VARCHAR(256) NOT NULL,
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -62,6 +63,24 @@ END ;;
 DELIMITER ;;
 CREATE TRIGGER `subcomments_uuid`
 BEFORE INSERT ON `subcomments` FOR EACH ROW
+BEGIN
+  IF new.id IS NULL THEN
+    SET new.id = uuid();
+  END IF;
+END ;;
+-- TRIGGER CREATE UUID FOR BOOKMARKS
+DELIMITER ;;
+CREATE TRIGGER `bookmark_uuid`
+BEFORE INSERT ON `bookmarks` FOR EACH ROW
+BEGIN
+  IF new.id IS NULL THEN
+    SET new.id = uuid();
+  END IF;
+END ;;
+-- TRIGGER CREATE UUID FOR CONNECTIONS
+DELIMITER ;;
+CREATE TRIGGER `connection_uuid`
+BEFORE INSERT ON `connections` FOR EACH ROW
 BEGIN
   IF new.id IS NULL THEN
     SET new.id = uuid();
