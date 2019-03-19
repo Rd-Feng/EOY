@@ -24,8 +24,30 @@ router.get('/comment/:id/like', (req, res) => {
   });
 })
 
+router.get('/comment/:id/unlike', (req, res) => {
+  connection.query('UPDATE comments SET likes=likes-1 WHERE id=' + connection.escape(req.params.id), (err) => {
+    if (err) {
+      console.log(err);
+      res.send({status: 'failed'});
+    } else {
+      res.send({status: 'success'});
+    }
+  });
+})
+
 router.get('/subcomment/:id/like', (req, res) => {
   connection.query('UPDATE subcomments SET likes=likes+1 WHERE id=' + connection.escape(req.params.id), (err) => {
+    if (err) {
+      console.log(err);
+      res.send({status: 'failed'});
+    } else {
+      res.send({status: 'success'});
+    }
+  });
+})
+
+router.get('/subcomment/:id/unlike', (req, res) => {
+  connection.query('UPDATE subcomments SET likes=likes-1 WHERE id=' + connection.escape(req.params.id), (err) => {
     if (err) {
       console.log(err);
       res.send({status: 'failed'});

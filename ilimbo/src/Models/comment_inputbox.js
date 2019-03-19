@@ -61,7 +61,25 @@ class CommentInputBox extends Component {
     });
   }
   handleComment() {
-    console.log(this.state.comment_message)
+    fetch('http://localhost:4000/comment', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+        },
+      body: JSON.stringify({
+        "text": this.state.comment_message,
+        "creator": this.state.id,
+        "item_id": "123456"
+      })
+    })
+    .then(res => res.json())
+    .then(res => {
+      if (res.status === "success")
+        console.log("Sucessfully insertion of comment into DB");
+      else
+      	console.log("Error occurred while inserting comment into DB");
+    })	
   }
   render() {
     return (

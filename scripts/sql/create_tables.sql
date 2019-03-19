@@ -49,3 +49,21 @@ CREATE TABLE IF NOT EXISTS subcomments (
   comment_id VARCHAR(36) NOT NULL,
   PRIMARY KEY (id)
 );
+-- TRIGGER CREATE UUID FOR COMMENTS TABLE
+DELIMITER ;;
+CREATE TRIGGER `comments_uuid`
+BEFORE INSERT ON `comments` FOR EACH ROW
+BEGIN
+  IF new.id IS NULL THEN
+    SET new.id = uuid();
+  END IF;
+END ;;
+-- TRIGGER CREATE UUID FOR SUBCOMMENTS TABLE
+DELIMITER ;;
+CREATE TRIGGER `subcomments_uuid`
+BEFORE INSERT ON `subcomments` FOR EACH ROW
+BEGIN 
+  IF new.id IS NULL THEN
+    SET new.id = uuid();
+  END IF;
+END ;;

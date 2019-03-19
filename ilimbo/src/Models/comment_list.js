@@ -10,12 +10,18 @@ class CommentList extends Component {
     this.state = {
     }
   }
+
   componentDidMount() {
+    this.interval = setInterval(() => this.setState({ time: Date.now() }), 1000);
+    console.log(this.interval);
     fetch('http://localhost:4000/comments/' +  '123456')
       .then(response => response.json())
       .then(response => {
         this.setState({ comment_list: response.data });
       });
+  }
+  componentWillUnmount(){
+    clearInterval(this.interval);
   }
   render() {
     let cards;
