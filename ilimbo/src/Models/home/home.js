@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import Navbar from './navbar'
+import HomeHeader from './header'
 import './styles/home.css'
+// import Comment from './comment'
 
 
 class Home extends Component {
@@ -12,8 +13,8 @@ class Home extends Component {
  
   render() {
     return (
-      <div className="home">
-        <Navbar/>
+      <div >
+        <HomeHeader/>
         </div>
     )
   }
