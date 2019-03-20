@@ -33,7 +33,7 @@ class Comment extends Component {
 	  <BookmarkButton/>
         </div>
         <CommentInputbox article_id={this.state.article_id}/>
-        <CommentList article_id={(() => {console.log('asdf', this.state.article_id); return this.state.article_id})()}/>
+        <CommentList article_id={this.state.article_id}/>
       </div>
     )
   }

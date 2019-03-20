@@ -15,6 +15,7 @@ class CommentList extends Component {
   }
   static getDerivedStateFromProps(props, state) {
     state.article_id = props.article_id;
+    return state;
   }
   GetComment(){
     if (!this.props.article_id) {
@@ -35,6 +36,7 @@ class CommentList extends Component {
       cards = this.state.comment_list.map(d => {
         return (
           <CommentBox
+            key={d.id}
             user_id={d.creator}
             text={d.text}
             created_at={d.created_at}

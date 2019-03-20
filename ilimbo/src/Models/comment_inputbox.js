@@ -51,10 +51,9 @@ class CommentInputBox extends Component {
     else{
       alert("Login to comment");
     }
-   
+
   }
   handleCommentPost(){
-    console.log("kkkkk1", this.state.article_id )
     fetch('http://localhost:4000/comment', {
       method: 'POST',
       headers: {
@@ -69,11 +68,12 @@ class CommentInputBox extends Component {
     })
     .then(res => res.json())
     .then(res => {
-      if (res.status === "success")
-        console.log("Sucessfully insertion of comment into DB");
-      else
-      	console.log("Error occurred while inserting comment into DB");
-    })	
+      if (res.status === "success") {
+        this.setState({comment_message: ''});
+      } else {
+        alert('Unable to comment at the momment.');
+      }
+    });
   }
   render() {
     return (
@@ -85,7 +85,7 @@ class CommentInputBox extends Component {
             style={this.state.comment_border}
             placeholder="Your comment"
             value={this.state.comment_message}
-            onChange={this.handleChange}>      
+            onChange={this.handleChange}>
           </textarea>
         </div>
         {this.state.comment_message.length > 0 && <div className="comment_button_container">

@@ -9,12 +9,17 @@ class SubCommentList extends Component {
     this.state = {
       showSubcomment: false
     }
+    this.subCommentInfo = this.subCommentInfo.bind(this);
+    this.interval = setInterval(this.subCommentInfo, 2000);
   }
   componentDidMount() {
     this.setState({
       sub_count: this.props.sub_count,
       comment_id: this.props.comment_id
     }, () => this.subCommentInfo());
+  }
+  componentWillUnmount(){
+    clearInterval(this.interval);
   }
   subCommentInfo() {
     fetch('http://localhost:4000/subcomments/' + this.state.comment_id)
@@ -33,6 +38,7 @@ class SubCommentList extends Component {
       cards = this.state.sub_comment_info.map(d => {
         return (
           <SubCommentBox
+            key={d.id}
             sub_count={this.state.sub_count}
             user_id={d.creator}
             text={d.text}

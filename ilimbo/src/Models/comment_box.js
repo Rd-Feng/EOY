@@ -35,7 +35,7 @@ class CommentBox extends Component {
     if (this.state.user_info) {
       cards = this.state.user_info.map(d => {
         return (
-          <li className="comment-item">
+          <li key={d.id} className="comment-item">
             <div className="comment-main-level">
               <div className="comment-avatar">
                 <img src={d.img_url} alt="" />

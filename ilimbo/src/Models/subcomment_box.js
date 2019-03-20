@@ -31,7 +31,7 @@ class SubCommentBox extends Component {
     if (this.state.user_info) {
       cards = this.state.user_info.map(d => {
         return (
-          <li className="sub-comment-item">
+          <li id={d.id} className="sub-comment-item">
             <div className="comment-avatar">
               <img src={d.img_url} alt="" />
             </div>
