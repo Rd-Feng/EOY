@@ -40,7 +40,7 @@ class SubCommentBox extends Component {
             <div className="comment-box">
               <div className="comment-head">
                 <h6 className="comment-name by-author">
-                  <a href="#" onClick={() => this.props.history.push('/profile/' + d.id)}>{d.first_name} {d.last_name}</a>
+                  <a  onClick={() => this.props.history.push('/profile/' + d.id)}>{d.first_name} {d.last_name}</a>
                 </h6><span>{moment(this.state.created_at).format('YYYY-MM-DD HH:mm:ss')}</span>
                 <Like likes={this.state.likes} isSubcomment={true} comment_id={this.state.sub_id} />
               </div>
