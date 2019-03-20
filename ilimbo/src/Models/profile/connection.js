@@ -69,7 +69,6 @@ class Connections extends Component {
     }
     return (
       <div className="connection-page">
-        <Homeheader/>
         <div className="connection-container">
           {cards}
 	</div>

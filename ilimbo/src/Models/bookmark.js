@@ -73,7 +73,6 @@ class Bookmark extends Component {
     }
     return (
       <div className="bookmark-page">
-        <Homeheader/>
         {cards}
       </div>
     )
