@@ -1,0 +1,46 @@
+.form_panel h4 {
+  margin-top: 8%;
+  margin-bottom: 8%;
+}
+.form_panel {
+  position: absolute;
+  width: 500px;
+  height: 100%;
+  z-index: 15;
+  top: 35%;
+  left: 50%;
+  margin: -100px 0 0 -250px;
+}
+.form_panel input {
+  float: right;
+  padding: 5px;
+  width: 45%;
+  margin-top: -5px;
+}
+button.btn_save {
+  margin-top: 10px;
+  height: 50px;
+  width: 80px;
+  color: white;
+  font-size: 120%;
+  border-radius: 25px;
+  background-color: #add8e6;
+  float: right;
+}
+button.btn_cancel {
+  margin-top: 10px;
+  height: 50px;
+  width: 80px;
+  font-size: 120%;
+  border-radius: 25px;
+  background-color: orange;
+}
+button.btn_save:hover {
+  background-color: #67b0d1;
+}
+button.btn_cancel:hover {
+  background-color: #ff8d00;
+}
+.save_profile {
+  margin-top: 10px;
+}

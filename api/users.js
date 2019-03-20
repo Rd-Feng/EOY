@@ -42,8 +42,11 @@ router.post('/user', (req, res) => {
 });
 
 router.put('/user', (req, res) => {
-  const { id, github, linkedin, twitter } = req.body;
-  connection.query('UPDATE users SET github=' + connection.escape(github) +
+  const { id, first_name, last_name, email, github, linkedin, twitter } = req.body;
+  connection.query('UPDATE users SET first_name=' + connection.escape(first_name) +
+                                  ', last_name=' + connection.escape(last_name) +
+                                  ', email=' + connection.escape(email) +
+                                  ', github=' + connection.escape(github) +
                                   ', linkedin=' + connection.escape(linkedin) +
                                   ', twitter=' + connection.escape(twitter) +
                                   ' WHERE id=' + connection.escape(id), (err) => {
