@@ -1,11 +1,12 @@
 .profile_header{
   /* position: relative; */
-  padding: 110px 10px 75px 10px;
+  
   /* z-index: 2; */
   background-color:lightblue;
 }
 
 .profile_name{
+  padding: 110px 10px 75px 10px;
   color: black;
   font-size: 30px;
   text-align: center;
