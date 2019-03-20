@@ -1,0 +1,43 @@
+.connection-card {
+  text-align: center;
+  display: block;
+  width: 250px;
+  height: 200px;
+  position: relative;
+  border: 1px #DDDDDD solid;
+  margin: 1%;
+}
+
+.connection-card:hover {
+  opacity: 0.8;
+ }
+
+.connection-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.null-container {
+  display: table;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.null-connection {
+  font-size: 30px;
+  margin: 5%;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.null-image {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+img {
+  width: 25%;
+  height: 25%;
+}

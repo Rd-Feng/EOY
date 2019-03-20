@@ -1,21 +1,66 @@
+.header {
+  font: "Proxima Nova", "Helvetica Neue", Helvetica, arial, sans-serif;
+  font-size: 30px;
+  border: 1px #DDDDDD solid;
+}
+
+.bookmark-card::-webkit-scrollbar { 
+  width: 0 !important 
+}
+
 .bookmark-card {
   text-align: center;
   display: block;
-  width: 150px;
-  height: 100px;
+  width: 20%;
+  height: 200px;
   position: relative;
-  border: 1px #DDDDDD solid;
   margin: 1%;
+  background-color: yellow;
+  overflow: scroll;
 }
 
-.bookmark-card:hover {
-  opacity: 0.8;
+.bookmark-link:hover {
+  opacity: 0.4;
  }
 
- .bookmark-container {
-   display: flex;
-   flex-wrap: wrap;
-   justify-content: center;
- }
+.bookmark-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 
+.bookmark-link {
+  text-align: center
+}
 
+.bookmark-button {
+  text-align: center
+}
+
+.bookmark-date {
+  text-align: center
+}
+
+.null-container {
+  display: table;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.null-bookmark {
+  font-size: 30px;
+  margin: 5%;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.null-image {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+img {
+  width: 25%;
+  height: 25%;
+}
