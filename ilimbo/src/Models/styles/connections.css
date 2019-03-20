@@ -37,7 +37,10 @@
 }
 
 .card-media {
-  width: 100%;
+  width: 75%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .card-details {
@@ -45,7 +48,7 @@
 }
 
 .card-head {
-  font-weight: 100;
+  font-weight: 200;
   text-align: center;
 }
 
@@ -56,9 +59,10 @@
 
 .card-body {
   font-size: 12px;
-  font-weight: 100;
+  font-weight: 150;
   text-align: center;
 }
+
 .card-action-button {
   border-radius: 2px;
   color: #FFAB40;

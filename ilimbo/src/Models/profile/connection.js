@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Homeheader from '../home/header'
 import '../styles/connections.css'
+import {withRouter} from 'react-router-dom';
 
 class Connections extends Component {
   constructor(props) {
@@ -36,21 +37,8 @@ class Connections extends Component {
 	})
       })
   }
-  removeConnection(id) {
-    fetch('http://localhost:4000/connections/disconnect', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        "user_id": this.state.user_id,
-        "f_id": id
-      })
-    })
-    .then(res => {
-      console.log(res);
-    })
+  visitConnection(id) {
+    this.props.history.push('/profile/' + id);
   }
   render() {
     let cards = [];
@@ -63,14 +51,14 @@ class Connections extends Component {
 	    break;
 	  }
 	}
-	console.log(arr)
+	
 	return (
 	  <div class="card">
-	  <img src={JSON.parse(localStorage.getItem("ImgUrl"))} class="card-media" />
-	  <div class="card-details">
-	    <h2 class="card-head"> {arr[0] + ' ' +arr[1]}</h2>
-	    <h2 class="card-body"> {arr[2]} </h2>
-	    <a href="#/" class="card-action-button" onClick={(e) => {this.removeConnection(e.target.id);}} id={connection.f_id}> UNFOLLOW </a>
+	    <img src={JSON.parse(localStorage.getItem("ImgUrl"))} class="card-media" />
+	    <div class="card-details">
+	      <h2 class="card-head"> {arr[0] + ' ' +arr[1]}</h2>
+	      <h2 class="card-body"> {arr[2]} </h2>
+	      <a href="#/" class="card-action-button" onClick={(e) => {this.visitConnection(e.target.id);}} id={connection.f_id}> PROFILE </a>
 	    </div>
 	  </div>
         )
@@ -90,4 +78,4 @@ class Connections extends Component {
   }
 }
 
-export default Connections;
+export default withRouter(Connections);
