@@ -1,18 +1,18 @@
-.bookmark-card {
+.connection-card {
   text-align: center;
   display: block;
-  width: 150px;
-  height: 100px;
+  width: 250px;
+  height: 200px;
   position: relative;
   border: 1px #DDDDDD solid;
   margin: 1%;
 }
 
-.bookmark-card:hover {
+.connection-card:hover {
   opacity: 0.8;
  }
 
-.bookmark-container {
+.connection-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -25,7 +25,7 @@
   width: 100%;
 }
 
-.null-bookmark {
+.null-connection {
   font-size: 30px;
   margin: 5%;
   display: table-cell;
