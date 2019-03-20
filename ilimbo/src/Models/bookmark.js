@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Homeheader from './home/header'
 import './styles/bookmarks.css';
+import {withRouter} from 'react-router-dom';
 
 class Bookmark extends Component {
   constructor(props) {
@@ -12,23 +13,22 @@ class Bookmark extends Component {
 
   componentDidMount() {
     let user_id = localStorage.getItem("id_token");
+    let titles = []
     fetch('http://localhost:4000/bookmarks/' + user_id)
       .then(response => response.json())
       .then(response => {
-	this.setState({ bookmarks: response.data });	
-      })
-      .then(_ => {
-        let titles = []
-	this.state.bookmarks.forEach(bookmark => {
-          fetch('https://hacker-news.firebaseio.com/v0/item/' + bookmark.item_id + '.json').then(res => res.json())
-	  .then(res => {
-	    titles.push(res.title)
+	this.setState({ bookmarks: response.data }, () => {
+	  this.state.bookmarks.forEach(bookmark => {
+	    fetch('https://hacker-news.firebaseio.com/v0/item/' + bookmark.item_id + '.json').then(res => res.json())
+	    .then(res => {
+	      let obj = {[bookmark.item_id]: res.title}
+	      titles.push(obj)
+	    })
+	    .then(_ => {
+	      this.setState({title: titles})
+	    })
 	  })
-	})
-        return titles;
-      })
-      .then(requests => {
-        console.log(requests);
+        })
       })
   }
   removeBookmark(id) {
@@ -48,20 +48,28 @@ class Bookmark extends Component {
       console.log(res);
     })
   }
+  linkHandler(id) {
+    this.props.history.push('/history/' + id); 
+  }
   render() {
     let cards = [];
-    if (this.state.bookmarks) {
-      cards = this.state.bookmarks.map(bookmark => {
-        return (
-          <div className="bookmark-card" id={bookmark.item_id}>
-	    <button onClick={(e) => {this.removeBookmark(e.target.id);}} className="button" id={bookmark.item_id}>
-	      Remove Bookmark
-            </button>
-	    <div className="bookmark-link">
-	      { bookmark.item_id } 
+    if (this.state.title) {
+      cards = this.state.title.map((bookmark, index) => {
+        let id = Object.keys(bookmark)[0]
+	return (
+          <div className="bookmark-card" key={id} id={id}>
+	    <div className="header"> Article </div>
+	    <div className="bookmark-link" onClick={()=> {this.linkHandler(id);}}>
+	      { bookmark[id] } 
 	    </div>
+	    <div className="header"> Date </div>
 	    <div className="bookmark-date">
-	      { bookmark.created_at }
+	      { this.state.bookmarks[index].created_at }
+	    </div>
+            <div className="bookmark-button">
+	      <button onClick={(e) => {this.removeBookmark(e.target.id);}} className="button" id={id}>
+	        Remove Bookmark
+              </button>
 	    </div>
 	  </div>
         )
@@ -81,4 +89,4 @@ class Bookmark extends Component {
   }
 }
 
-export default Bookmark;
+export default withRouter(Bookmark);
