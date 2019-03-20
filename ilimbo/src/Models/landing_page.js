@@ -4,11 +4,14 @@ import LandingHeader from './landing_header'
 import About from './about'
 import Comment from './comment'
 import './styles/landing_page.css'
+import {withRouter} from 'react-router-dom';
 
 class Landing extends Component {
   constructor(props) {
     super(props)
-    this.state = {
+    this.state = {}
+    if (localStorage.getItem('id_token')) {
+        this.props.history.push('/home');
     }
   }
   componentDidMount() {
@@ -21,12 +24,12 @@ class Landing extends Component {
           .then(data => {
             this.setState({ article_url: data.url, article_title: data.title });
           })
-      })
+      });
   }
   render() {
     return (
       <div>
-        <section id="intro" className="intro_section"> <LandingHeader /></section>   
+        <section id="intro" className="intro_section"> <LandingHeader /></section>
         <section  id='article' className="article_section">
         <Comment
         article_url = {this.state.article_url}
@@ -39,4 +42,4 @@ class Landing extends Component {
   }
 }
 
-export default Landing;
+export default withRouter(Landing);
