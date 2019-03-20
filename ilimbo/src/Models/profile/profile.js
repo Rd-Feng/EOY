@@ -53,7 +53,7 @@ class Profile extends Component {
       <div >
         <HomeHeader />
         <div className="profile_header">
-          {JSON.parse(localStorage.getItem("id_token")) === this.props.match.params.user_id && <button className="edit_btn" onCliek={() => this.props.history.push('/profile/edit/' + this.props.match.params.user_id)}>&#x2710; Edit Profile</button>}
+          {JSON.parse(localStorage.getItem("id_token")) === this.props.match.params.user_id && <button className="edit_btn" onClick={() => this.props.history.push('/profile/edit/' + this.props.match.params.user_id)}>&#x2710; Edit Profile</button>}
           <div className="follow_btn"> <ConnectionBtn profile_id={this.props.match.params.user_id}/></div>
           <div className="profile_name">
             <div>{this.state.user_firstname} {this.state.user_lastname}</div>
