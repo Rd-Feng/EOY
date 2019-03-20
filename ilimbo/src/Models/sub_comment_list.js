@@ -14,8 +14,8 @@ class SubCommentList extends Component {
   }
   componentDidMount() {
     this.setState({
-      sub_count: this.props.sub_count,
-      comment_id: this.props.comment_id
+      comment_id: this.props.comment_id,
+      sub_count: 0
     }, () => this.subCommentInfo());
   }
   componentWillUnmount(){
@@ -25,7 +25,13 @@ class SubCommentList extends Component {
     fetch('http://localhost:4000/subcomments/' + this.state.comment_id)
       .then(response => response.json())
       .then(response => {
-        this.setState({ sub_comment_info: response.data });
+        let subcomments = response.data;
+        fetch('http://localhost:4000/comment/' + this.props.comment_id)
+          .then(response => response.json())
+          .then(response => this.setState({
+            sub_count: response.data[0].sub_count,
+            sub_comment_info: subcomments
+          }))
       });
   }
 

@@ -53,7 +53,7 @@ class CommentBox extends Component {
                 </div>
               </div>
             </div>
-            {this.state.sub_count > 0 && <SubCommentList comment_id={this.state.comment_id} sub_count={this.state.sub_count} />}
+            <SubCommentList comment_id={this.state.comment_id}/>
           </li>
         )
       })
