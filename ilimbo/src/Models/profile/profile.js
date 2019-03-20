@@ -1,12 +1,19 @@
 import React, { Component } from 'react'
 import HomeHeader from '../home/header'
 import './styles/profile.css'
+import Bookmark from '../bookmark'
+import Connection from './connection'
+import ConnectionBtn from './connection_button'
 
 
 class Profile extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      showFollw: true,
+      showBookmark: false,
+      follow_color: { 'background-color': 'lightcyan' },
+      bookmark_color: {}
     }
   }
   componentDidMount() {
@@ -34,22 +41,30 @@ class Profile extends Component {
       })
   }
 
+  handleFollow() {
+    this.setState({ showFollw: true, showBookmark: false, bookmark_color: {}, follow_color: { 'background-color': 'lightcyan' } })
+  }
+  handleBookMark() {
+    this.setState({ showFollw: false, showBookmark: true, follow_color: {}, bookmark_color: { 'background-color': 'lavender' } })
+  }
   render() {
     console.log(this.state.user_info)
     return (
       <div >
         <HomeHeader />
         <div className="profile_header">
-        {JSON.parse(localStorage.getItem("id_token")) === this.props.location.pathname.split("/")[2] && <button>&#x2710; Edit Profile</button>}
+          {JSON.parse(localStorage.getItem("id_token")) === this.props.location.pathname.split("/")[2] && <button className="edit_btn">&#x2710; Edit Profile</button>}
+          <div className="follow_btn"> <ConnectionBtn /></div>
           <div className="profile_name">
-            {this.state.user_firstname} {this.state.user_lastname}
+            <div>{this.state.user_firstname} {this.state.user_lastname}</div>
+            <div className="profile_email">{this.state.user_emal}</div>
           </div>
 
         </div>
         <div className="profile_info_container">
           <div className="profile_info_left">
-            <p>{this.state.connection_count} Following</p>
-            <button>+ Follow</button>
+            <button style={this.state.follow_color} onClick={() => { this.handleFollow(); }}>{this.state.connection_count} Following</button>
+            <button style={this.state.bookmark_color} onClick={() => { this.handleBookMark(); }}>Bookmark</button>
           </div>
           <img className="profile_user_img" src={this.state.user_img}></img>
           <div className="profile_info_right">
@@ -63,6 +78,12 @@ class Profile extends Component {
               <img alt="twitter" src={require(`../images/twitter.png`)} />
             </a>}
           </div>
+        </div>
+        <div className="profile_content_container">
+          {this.state.showFollw && <div className="profile_follow"><Connection /> </div>}
+          {this.state.showBookmark && <div className="profile_bookmark"><Bookmark /></div>}
+
+
         </div>
       </div>
     )

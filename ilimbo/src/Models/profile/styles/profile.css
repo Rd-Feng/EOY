@@ -6,21 +6,20 @@
 }
 
 .profile_name{
-  padding: 110px 10px 75px 10px;
+  padding: 90px 10px 75px 10px;
   color: black;
   font-size: 30px;
   text-align: center;
 }
-.profile_info_container p{
-  display: inline-block;
-}
+
 .profile_info_container button{
   display: inline-block;
-  margin-left: 10px;
-  border-radius: 10px;
   color: white;
-  border: 2px solid white;
+  border: none;
   background-color: black;
+  padding: 14px;
+  outline: none !important;
+  border-top: 1px solid black;
 }
 .profile_info_container button:hover{
   color: black;
@@ -47,10 +46,38 @@
 }
 
 .profile_user_img{
-  /* flex: 1 33%; */
+  border: 3px solid white;
+  border-radius: 2px;
   margin-top: -60px;
 }
 .profile_info_right a{
   align-self: center;
   margin-right: 10px;
+}
+.profile_follow{
+  background-color: lightcyan;
+  height: 100vh;
+  padding: 5%;
+}
+.profile_bookmark{
+  background-color: lavender;
+  height: 100vh;
+}
+.edit_btn{
+  margin: 20px 10px;
+  background-color: transparent;
+  border: none;
+  outline: none !important;
+}
+
+.edit_btn:hover{
+  color: gray;
+}
+
+.follow_btn{
+  float: right;
+  margin: 20px 10px;
+}
+.profile_email{
+  font-size: 13px;
 }
