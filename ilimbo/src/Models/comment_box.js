@@ -5,6 +5,7 @@ import SubCommentList from './sub_comment_list'
 import Like from './like'
 import Reply from './reply'
 import moment from 'moment'
+import {withRouter} from 'react-router-dom';
 
 
 class CommentBox extends Component {
@@ -44,7 +45,7 @@ class CommentBox extends Component {
               <div className="comment-box">
                 <div className="comment-head">
                   <h6 className="comment-name by-author">
-                    <a href="http://creaticode.com/blog">{d.first_name} {d.last_name}</a>
+                    <a href='' onClick={() => this.props.history.push('/profile/' + d.id)}>{d.first_name} {d.last_name}</a>
                   </h6><span>{moment(this.state.created_at).format('YYYY-MM-DD HH:mm:ss')}</span>
                   <Like likes={this.state.likes} comment_id={this.state.comment_id}/>
                   <Reply comment_id={this.state.comment_id}/>
@@ -68,4 +69,4 @@ class CommentBox extends Component {
   }
 }
 
-export default CommentBox;
+export default withRouter(CommentBox);

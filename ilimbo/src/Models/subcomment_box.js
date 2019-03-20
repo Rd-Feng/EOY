@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import './styles/comment_box.css';
 import Like from './like';
 import moment from 'moment';
+import {withRouter} from 'react-router-dom';
 
 
 class SubCommentBox extends Component {
@@ -39,7 +40,7 @@ class SubCommentBox extends Component {
             <div className="comment-box">
               <div className="comment-head">
                 <h6 className="comment-name by-author">
-                  <a href="http://creaticode.com/blog">{d.first_name} {d.last_name}</a>
+                  <a href='' onClick={() => this.props.history.push('/profile/' + d.id)}>{d.first_name} {d.last_name}</a>
                 </h6><span>{moment(this.state.created_at).format('YYYY-MM-DD HH:mm:ss')}</span>
                 <Like likes={this.state.likes} isSubcomment={true} comment_id={this.state.sub_id} />
               </div>
@@ -60,4 +61,4 @@ class SubCommentBox extends Component {
   }
 }
 
-export default SubCommentBox;
+export default withRouter(SubCommentBox);
