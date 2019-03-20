@@ -65,8 +65,8 @@ class Navbar extends Component {
               <ul className={(this.state.isScroll) ? 'nav navbar-nav navbar-text-color' : 'nav navbar-nav navbar-nav-bg'}>
                 <li className="active">
                   <a onClick={() => this.handleHome()}>Home</a></li>
-                <li><a onClick={() => this.handleProfile()}>Profile</a></li>
-                <li><a onClick={() => this.handleBookmark()}>Bookmark</a></li>
+                <li><a href={'http://localhost:3000/profile/' + JSON.parse(localStorage.getItem("id_token"))}>Profile</a></li>
+                <li><a href='http://localhost:3000/bookmark'>Bookmark</a></li>
                 <li><a onClick={() => this.handleLogout()}>Logout</a></li>
               </ul>
             </div>
