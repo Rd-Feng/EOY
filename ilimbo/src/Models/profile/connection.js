@@ -13,7 +13,7 @@ class Connections extends Component {
 
   componentDidMount() {
     let list = []
-    let user_id = JSON.parse(localStorage.getItem("id_token"));
+    let user_id = this.props.match.params.user_id;
     fetch('http://localhost:4000/connections/' + user_id)
       .then(response => response.json())
       .then(response => {
@@ -51,7 +51,7 @@ class Connections extends Component {
 	    break;
 	  }
 	}
-	
+
 	return (
 	  <div class="card">
 	    <img src={JSON.parse(localStorage.getItem("ImgUrl"))} class="card-media" />
@@ -62,7 +62,7 @@ class Connections extends Component {
 	    </div>
 	  </div>
         )
-      })    
+      })
     }
     if (cards.length === 0) {
       cards = <div className="null-container"> <div className="null-connection"> No connections found </div> <div className="null-image"> <img src="https://i.pinimg.com/originals/69/60/8c/69608c0575dfc760c33b5a2c3c8fe98f.png"/> </div>  </div>
