@@ -1,4 +1,4 @@
-h4 {
+.form_panel h4 {
   margin-top: 8%;
   margin-bottom: 8%;
 }
@@ -11,7 +11,7 @@ h4 {
   left: 50%;
   margin: -100px 0 0 -250px;
 }
-input {
+.form_panel input {
   float: right;
   padding: 5px;
   width: 45%;
