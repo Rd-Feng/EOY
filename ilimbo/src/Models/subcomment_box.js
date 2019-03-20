@@ -31,14 +31,14 @@ class SubCommentBox extends Component {
     if (this.state.user_info) {
       cards = this.state.user_info.map(d => {
         return (
-          <li id={d.id} className="sub-comment-item">
+          <li key={this.state.sub_id} className="sub-comment-item">
             <div className="comment-avatar">
               <img src={d.img_url} alt="" />
             </div>
             <div className="comment-box">
               <div className="comment-head">
                 <h6 className="comment-name by-author">
-                  <a href="http://creaticode.com/blog">{d.first_name}{d.last_name}</a>
+                  <a href="http://creaticode.com/blog">{d.first_name} {d.last_name}</a>
                 </h6><span>{this.state.created_at}</span>
                 <Like likes={this.state.likes} isSubcomment={true} comment_id={this.state.sub_id} />
               </div>
