@@ -4,41 +4,9 @@
   border: 1px #DDDDDD solid;
 }
 
-.bookmark-card::-webkit-scrollbar { 
-  width: 0 !important 
-}
-
-.bookmark-card {
-  text-align: center;
-  display: block;
-  width: 20%;
-  height: 200px;
-  position: relative;
-  margin: 1%;
-  background-color: yellow;
-  overflow: scroll;
-}
-
-.bookmark-link:hover {
-  opacity: 0.4;
- }
-
-.bookmark-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.bookmark-link {
-  text-align: center
-}
-
-.bookmark-button {
-  text-align: center
-}
-
-.bookmark-date {
-  text-align: center
+.bookmark-page {
+  background-color: #ededed;
+  font: normal 14px / 20px 'Roboto', sans-serif;
 }
 
 .null-container {
@@ -60,7 +28,43 @@
   vertical-align: middle;
 }
 
-img {
-  width: 25%;
-  height: 25%;
+.card {
+  background-color: #fff;
+  border-radius: 2px;
+  box-shadow: -1px 2px 4px rgba(0,0,0,.25), 1px 1px 3px rgba(0,0,0,.1);
+  margin: 0 auto;
+  max-width: 200px;
+}
+
+.card-media {
+  width: 100%;
+}
+
+.card-details {
+  padding: 5px 15px;
+}
+
+.card-head {
+  font-weight: 100;
+  text-align: center;
+}
+
+.card-head {
+  font-size: 26px;
+  margin-bottom: 15px;
+}
+
+.card-action-button {
+  border-radius: 2px;
+  color: #FFAB40;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 500;
+  margin: 0;
+  padding: 10px;
+  text-decoration: none;
+}
+
+.card-action-button:hover {
+  background-color: rgba(255 ,168 ,58, .2);
 }
