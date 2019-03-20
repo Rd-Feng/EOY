@@ -12,7 +12,7 @@ class Profile extends Component {
     this.state = {
       showFollw: true,
       showBookmark: false,
-      follow_color: { 'background-color': 'lightcyan' },
+      follow_color: { 'backgroundColor': 'lightcyan' },
       bookmark_color: {}
     }
   }
@@ -42,10 +42,10 @@ class Profile extends Component {
   }
 
   handleFollow() {
-    this.setState({ showFollw: true, showBookmark: false, bookmark_color: {}, follow_color: { 'background-color': 'lightcyan' } })
+    this.setState({ showFollw: true, showBookmark: false, bookmark_color: {}, follow_color: { 'backgroundColor': 'lightcyan' } })
   }
   handleBookMark() {
-    this.setState({ showFollw: false, showBookmark: true, follow_color: {}, bookmark_color: { 'background-color': 'lavender' } })
+    this.setState({ showFollw: false, showBookmark: true, follow_color: {}, bookmark_color: { 'backgroundColor': 'lavender' } })
   }
   render() {
     console.log(this.state.user_info)
@@ -53,8 +53,8 @@ class Profile extends Component {
       <div >
         <HomeHeader />
         <div className="profile_header">
-          {JSON.parse(localStorage.getItem("id_token")) === this.props.location.pathname.split("/")[2] && <button className="edit_btn">&#x2710; Edit Profile</button>}
-          <div className="follow_btn"> <ConnectionBtn /></div>
+          {JSON.parse(localStorage.getItem("id_token")) === this.props.match.params.user_id && <button className="edit_btn" onCliek={() => this.props.history.push('/profile/edit/' + this.props.match.params.user_id)}>&#x2710; Edit Profile</button>}
+          <div className="follow_btn"> <ConnectionBtn profile_id={this.props.match.params.user_id}/></div>
           <div className="profile_name">
             <div>{this.state.user_firstname} {this.state.user_lastname}</div>
             <div className="profile_email">{this.state.user_emal}</div>
