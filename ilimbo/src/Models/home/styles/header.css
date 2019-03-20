@@ -2,3 +2,10 @@
   background-color: orangered;
   height: 80px;
 }
+
+@media (max-width: 768px){
+  .home_header{
+    background-color: transparent;
+    height: 40px;
+  }
+}
