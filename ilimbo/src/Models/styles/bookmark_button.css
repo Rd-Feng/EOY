@@ -1,0 +1,24 @@
+button.btn_bookmark {
+  margin-top: 10px;
+  height: 50px;
+  width: 150px;
+  color: white;
+  font-size: 120%;
+  border-radius: 25px;
+  background-color: #67b0d1;
+  float: right;
+}
+button.btn_unbookmark {
+  margin-top: 10px;
+  height: 50px;
+  width: 150px;
+  font-size: 120%;
+  border-radius: 25px;
+  background-color: orange;
+}
+button.btn_bookmark:hover {
+  background-color: #add8e6;
+}
+button.btn_unbookmark:hover {
+  background-color: #ff8d00;
+}

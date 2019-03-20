@@ -4,8 +4,8 @@
   border: 1px #DDDDDD solid;
 }
 
-.bookmark-card::-webkit-scrollbar { 
-  width: 0 !important 
+.bookmark-card::-webkit-scrollbar {
+  width: 0 !important
 }
 
 .bookmark-card {
