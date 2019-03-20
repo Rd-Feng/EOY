@@ -4,6 +4,7 @@ import './styles/comment_box.css';
 import SubCommentList from './sub_comment_list'
 import Like from './like'
 import Reply from './reply'
+import moment from 'moment'
 
 
 class CommentBox extends Component {
@@ -43,8 +44,8 @@ class CommentBox extends Component {
               <div className="comment-box">
                 <div className="comment-head">
                   <h6 className="comment-name by-author">
-                    <a href="http://creaticode.com/blog">{d.first_name}{d.last_name}</a>
-                  </h6><span>{this.state.created_at}</span>
+                    <a href="http://creaticode.com/blog">{d.first_name} {d.last_name}</a>
+                  </h6><span>{moment(this.state.created_at).format('YYYY-MM-DD HH:mm:ss')}</span>
                   <Like likes={this.state.likes} comment_id={this.state.comment_id}/>
                   <Reply comment_id={this.state.comment_id}/>
                 </div>

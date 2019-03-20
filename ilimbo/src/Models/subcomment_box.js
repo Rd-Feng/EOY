@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import './styles/comment_box.css';
-import Like from './like'
+import Like from './like';
+import moment from 'moment';
 
 
 class SubCommentBox extends Component {
@@ -39,7 +40,7 @@ class SubCommentBox extends Component {
               <div className="comment-head">
                 <h6 className="comment-name by-author">
                   <a href="http://creaticode.com/blog">{d.first_name} {d.last_name}</a>
-                </h6><span>{this.state.created_at}</span>
+                </h6><span>{moment(this.state.created_at).format('YYYY-MM-DD HH:mm:ss')}</span>
                 <Like likes={this.state.likes} isSubcomment={true} comment_id={this.state.sub_id} />
               </div>
               <div className="comment-content">{this.state.text}
