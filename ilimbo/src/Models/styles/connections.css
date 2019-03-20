@@ -54,6 +54,11 @@
   margin-bottom: 15px;
 }
 
+.card-body {
+  font-size: 12px;
+  font-weight: 100;
+  text-align: center;
+}
 .card-action-button {
   border-radius: 2px;
   color: #FFAB40;
