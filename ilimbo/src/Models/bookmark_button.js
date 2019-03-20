@@ -82,8 +82,8 @@ class BookmarkButton extends Component {
     }
     return (
       <div>
-        <button id='bookmark' className="btn_bookmark" onClick={() => {this.handleClick('bookmark')}}> Bookmark </button>
-        <button id='unbookmark' className="btn_unbookmark" onClick={() => {this.handleClick('unbookmark')}}> Unbookmark </button>
+        <button id='bookmark' style={{display: 'block'}} className="btn_bookmark" onClick={() => {this.handleClick('bookmark')}}> Bookmark </button>
+        <button id='unbookmark' style={{display: 'none'}} className="btn_unbookmark" onClick={() => {this.handleClick('unbookmark')}}> Unbookmark </button>
       </div>
     )
   }

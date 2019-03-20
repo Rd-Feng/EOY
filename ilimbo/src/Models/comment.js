@@ -19,8 +19,8 @@ class Comment extends Component {
         <p className="comment-invisible">about us invisible text for scrolling down</p>
         <div className="comment-title">
           <a href={this.props.article_url} target="_blank" rel="noopener noreferrer">{this.props.article_title}</a>
-          <BookmarkButton item_id={this.props.article_id}/>
-        </div>
+        </div><br/>
+        <BookmarkButton item_id={this.props.article_id}/>
         <CommentInputbox article_id={this.props.article_id} />
         <CommentList article_id={this.props.article_id} />
       </div>
