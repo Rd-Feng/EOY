@@ -12,7 +12,21 @@ class Like extends Component {
       comment_id: this.props.comment_id
     }
   }
-
+  componentDidMount () {
+    let commentType = this.props.isSubcomment ? "subcomment" : "comment";
+    let myHeaders = new Headers();
+    myHeaders.append('pragma', 'no-cache');
+    myHeaders.append('cache-control', 'no-cache');
+    let myInit = {
+      method: 'GET',
+      headers: myHeaders,
+    };
+    fetch(process.env.REACT_APP_API  + '/' + commentType + '/' + this.state.comment_id, myInit)
+      .then(response => response.json())
+      .then(response => {
+        this.setState(likes: response.data[0].likes });
+      })
+  }
   handleLike() {
     let commentType = this.props.isSubcomment ? "subcomment" : "comment";
     if (JSON.parse(localStorage.getItem("id_token"))) {
