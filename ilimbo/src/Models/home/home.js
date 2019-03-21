@@ -11,7 +11,7 @@ class Home extends Component {
     }
   }
   componentDidMount() {
-    fetch('http://localhost:4000/article_today')
+    fetch(process.env.REACT_APP_API + '/article_today')
       .then(response => response.json())
       .then(response => {
         this.setState({ article_id: response.data})

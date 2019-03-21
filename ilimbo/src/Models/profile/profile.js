@@ -17,7 +17,7 @@ class Profile extends Component {
     }
   }
   componentDidMount() {
-    fetch('http://localhost:4000/user/' + this.props.location.pathname.split("/")[2])
+    fetch(process.env.REACT_APP_API + '/user/' + this.props.location.pathname.split("/")[2])
       .then(response => response.json())
       .then(response => {
         this.setState({
@@ -32,7 +32,7 @@ class Profile extends Component {
         });
       })
       .then(response => {
-        fetch('http://localhost:4000/connections/' + this.props.location.pathname.split("/")[2])
+        fetch(process.env.REACT_APP_API + '/connections/' + this.props.location.pathname.split("/")[2])
           .then(response => response.json())
           .then(response => {
             this.setState({ connection_count: response.data.length, connection: response.data });

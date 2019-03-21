@@ -24,7 +24,7 @@ class ProfileEdit extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   componentDidMount () {
-    fetch('http://localhost:4000/user/' + this.props.match.params.user_id)
+    fetch(process.env.REACT_APP_API+'/user/' + this.props.match.params.user_id)
       .then(response => response.json())
       .then(response => this.setState({...response.data[0]}))
   }
@@ -34,7 +34,7 @@ class ProfileEdit extends Component {
     });
   }
   handleSubmit () {
-    fetch('http://localhost:4000/user/', {
+    fetch(process.env.REACT_APP_API + '/user/', {
       method: 'PUT',
       headers: {
         'Accept': 'application/json',

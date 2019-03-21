@@ -26,7 +26,7 @@ class CommentBox extends Component {
   }
 
   userInfo() {
-    fetch('http://localhost:4000/user/' + this.state.user_id)
+    fetch(process.env.REACT_APP_API + '/user/' + this.state.user_id)
       .then(response => response.json())
       .then(response => {
         this.setState({ user_info: response.data });
