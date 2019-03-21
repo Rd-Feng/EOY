@@ -23,6 +23,11 @@
   vertical-align: middle;
 }
 
+.connection-container {
+  display: flex;
+  flex-wrap: flex;
+}
+
 .card {
   background-color: #fff;
   border-radius: 2px;
