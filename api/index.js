@@ -12,7 +12,7 @@ let ARTICLE_TODAY = '19420532';
 var whitelist = ['http://www.ilimbo.space']
 var corsOptions = {
   origin: function (origin, callback) {
-    if (whitelist.indexOf(origin) !== -1) {
+    if (true || whitelist.indexOf(origin) !== -1) {
       callback(null, true)
     } else {
       callback(new Error('Not allowed by CORS'))

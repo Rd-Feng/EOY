@@ -21,7 +21,14 @@ class CommentList extends Component {
     if (!this.props.article_id) {
       return;
     }
-    fetch(process.env.REACT_APP_API + '/comments/' +  this.state.article_id)
+    let myHeaders = new Headers();
+    myHeaders.append('pragma', 'no-cache');
+    myHeaders.append('cache-control', 'no-cache');
+    let myInit = {
+      method: 'GET',
+      headers: myHeaders,
+    };
+    fetch(process.env.REACT_APP_API + '/comments/' +  this.state.article_id, myInit)
       .then(response => response.json())
       .then(response => {
         this.setState({ comment_list: response.data });
