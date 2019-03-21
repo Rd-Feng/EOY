@@ -9,7 +9,7 @@ const CLIENT_ID = '447724909836-ip4833mlicofoka8gaukf2ohm3tqacu0.apps.googleuser
 const client = new OAuth2Client(CLIENT_ID);
 let ARTICLE_TODAY = '19420532';
 
-var whitelist = ['http://localhost:3000']
+var whitelist = ['http://www.ilimbo.space']
 var corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
