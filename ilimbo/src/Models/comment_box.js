@@ -40,7 +40,7 @@ class CommentBox extends Component {
           <li key={d.id} className="comment-item">
             <div className="comment-main-level">
               <div className="comment-avatar">
-                <img src={d.img_url} alt="" />
+                <img src={d.img_url} alt="" onClick={() => this.props.history.push('/profile/' + d.id)}/>
               </div>
               <div className="comment-box">
                 <div className="comment-head">
