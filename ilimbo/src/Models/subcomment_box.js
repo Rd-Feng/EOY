@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import './styles/comment_box.css';
-import Like from './like'
+import Like from './like';
+import moment from 'moment';
+import {withRouter} from 'react-router-dom';
 
 
 class SubCommentBox extends Component {
@@ -31,15 +33,15 @@ class SubCommentBox extends Component {
     if (this.state.user_info) {
       cards = this.state.user_info.map(d => {
         return (
-          <li className="sub-comment-item">
+          <li key={this.state.sub_id} className="sub-comment-item">
             <div className="comment-avatar">
-              <img src={d.img_url} alt="" />
+              <img src={d.img_url} alt="" onClick={() => this.props.history.push('/profile/' + d.id)}/>
             </div>
             <div className="comment-box">
               <div className="comment-head">
                 <h6 className="comment-name by-author">
-                  <a href="http://creaticode.com/blog">{d.first_name}{d.last_name}</a>
-                </h6><span>{this.state.created_at}</span>
+                  <a href='' onClick={() => this.props.history.push('/profile/' + d.id)}>{d.first_name} {d.last_name}</a>
+                </h6><span>{moment(this.state.created_at).format('YYYY-MM-DD HH:mm:ss')}</span>
                 <Like likes={this.state.likes} isSubcomment={true} comment_id={this.state.sub_id} />
               </div>
               <div className="comment-content">{this.state.text}
@@ -59,4 +61,4 @@ class SubCommentBox extends Component {
   }
 }
 
-export default SubCommentBox;
+export default withRouter(SubCommentBox);

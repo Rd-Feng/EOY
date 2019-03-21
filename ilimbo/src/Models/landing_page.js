@@ -4,17 +4,42 @@ import LandingHeader from './landing_header'
 import About from './about'
 import Comment from './comment'
 import './styles/landing_page.css'
+import {withRouter} from 'react-router-dom';
 
 class Landing extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {}
+    if (localStorage.getItem('id_token')) {
+        this.props.history.push('/home');
+    }
+  }
+  componentDidMount() {
+    fetch(process.env.REACT_APP_API + '/article_today')
+      .then(response => response.json())
+      .then(response => {
+        this.setState({ article_id: response.data})
+        fetch('https://hacker-news.firebaseio.com/v0/item/' + response.data + '.json')
+          .then(response => response.json())
+          .then(data => {
+            this.setState({ article_url: data.url, article_title: data.title });
+          })
+      });
+  }
   render() {
     return (
       <div>
-        <section id="intro"> <LandingHeader /></section>   
-        <section id='about'><About/></section>
-        <section className="article_section" id='article'><Comment/></section>
+        <section id="intro" className="intro_section"> <LandingHeader /></section>
+        <section  id='article' className="article_section">
+        <Comment
+        article_url = {this.state.article_url}
+        article_title = {this.state.article_title}
+        article_id = {this.state.article_id}
+        /></section>
+        <section id='about' className="about_section"><About/></section>
       </div>
     )
   }
 }
 
-export default Landing;
+export default withRouter(Landing);

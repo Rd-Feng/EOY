@@ -4,6 +4,8 @@ import './styles/comment_box.css';
 import SubCommentList from './sub_comment_list'
 import Like from './like'
 import Reply from './reply'
+import moment from 'moment'
+import {withRouter} from 'react-router-dom';
 
 
 class CommentBox extends Component {
@@ -35,16 +37,16 @@ class CommentBox extends Component {
     if (this.state.user_info) {
       cards = this.state.user_info.map(d => {
         return (
-          <li className="comment-item">
+          <li key={d.id} className="comment-item">
             <div className="comment-main-level">
               <div className="comment-avatar">
-                <img src={d.img_url} alt="" />
+                <img src={d.img_url} alt="" onClick={() => this.props.history.push('/profile/' + d.id)}/>
               </div>
               <div className="comment-box">
                 <div className="comment-head">
                   <h6 className="comment-name by-author">
-                    <a href="http://creaticode.com/blog">{d.first_name}{d.last_name}</a>
-                  </h6><span>{this.state.created_at}</span>
+                    <a href='' onClick={() => this.props.history.push('/profile/' + d.id)}>{d.first_name} {d.last_name}</a>
+                  </h6><span>{moment(this.state.created_at).format('YYYY-MM-DD HH:mm:ss')}</span>
                   <Like likes={this.state.likes} comment_id={this.state.comment_id}/>
                   <Reply comment_id={this.state.comment_id}/>
                 </div>
@@ -52,7 +54,7 @@ class CommentBox extends Component {
                 </div>
               </div>
             </div>
-            {this.state.sub_count > 0 && <SubCommentList comment_id={this.state.comment_id} sub_count={this.state.sub_count} />}
+            <SubCommentList comment_id={this.state.comment_id}/>
           </li>
         )
       })
@@ -67,4 +69,4 @@ class CommentBox extends Component {
   }
 }
 
-export default CommentBox;
+export default withRouter(CommentBox);

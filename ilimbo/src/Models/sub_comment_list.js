@@ -9,18 +9,29 @@ class SubCommentList extends Component {
     this.state = {
       showSubcomment: false
     }
+    this.subCommentInfo = this.subCommentInfo.bind(this);
+    this.interval = setInterval(this.subCommentInfo, 500);
   }
   componentDidMount() {
     this.setState({
-      sub_count: this.props.sub_count,
-      comment_id: this.props.comment_id
+      comment_id: this.props.comment_id,
+      sub_count: 0
     }, () => this.subCommentInfo());
+  }
+  componentWillUnmount(){
+    clearInterval(this.interval);
   }
   subCommentInfo() {
     fetch('http://localhost:4000/subcomments/' + this.state.comment_id)
       .then(response => response.json())
       .then(response => {
-        this.setState({ sub_comment_info: response.data });
+        let subcomments = response.data;
+        fetch('http://localhost:4000/comment/' + this.props.comment_id)
+          .then(response => response.json())
+          .then(response => this.setState({
+            sub_count: response.data[0].sub_count,
+            sub_comment_info: subcomments
+          }))
       });
   }
 
@@ -33,6 +44,7 @@ class SubCommentList extends Component {
       cards = this.state.sub_comment_info.map(d => {
         return (
           <SubCommentBox
+            key={d.id}
             sub_count={this.state.sub_count}
             user_id={d.creator}
             text={d.text}

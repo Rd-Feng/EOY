@@ -19,25 +19,9 @@ class CommentInputBox extends Component {
       comment_message: ''
     }
   }
+
   componentDidMount() {
-    console.log("img", this.state.img_url)
-    console.log("id", this.state.id)
     document.querySelector('textarea').addEventListener('keydown', this.autosize);
-    // fetch('http://localhost:4000/signin=' + this.state.id_token, {
-    //   method: 'POST',
-    //   headers: {
-    //     'Accept': 'application/json',
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify({
-    //     "token": this.state.id_token
-    //   })
-    // })
-    //   .then(response => response.json())
-    //   .then(response =>{
-    //    console.log("data", response.data)
-    //   })
-    //   .catch(err => console.log(err))
   }
   componentWillUnmount() {
     document.querySelector('textarea').removeEventListener('keydown', this.autosize);
@@ -61,6 +45,15 @@ class CommentInputBox extends Component {
     });
   }
   handleComment() {
+    if (JSON.parse(localStorage.getItem("id_token"))){
+      this.setState({article_id: this.props.article_id}, ()=> this.handleCommentPost())
+    }
+    else{
+      alert("Login to comment");
+    }
+
+  }
+  handleCommentPost(){
     fetch('http://localhost:4000/comment', {
       method: 'POST',
       headers: {
@@ -69,17 +62,18 @@ class CommentInputBox extends Component {
         },
       body: JSON.stringify({
         "text": this.state.comment_message,
-        "creator": this.state.id,
-        "item_id": "123456"
+        "creator": JSON.parse(localStorage.getItem("id_token")),
+        "item_id": this.state.article_id
       })
     })
     .then(res => res.json())
     .then(res => {
-      if (res.status === "success")
-        console.log("Sucessfully insertion of comment into DB");
-      else
-      	console.log("Error occurred while inserting comment into DB");
-    })	
+      if (res.status === "success") {
+        this.setState({comment_message: ''});
+      } else {
+        alert('Unable to comment at the momment.');
+      }
+    });
   }
   render() {
     return (
@@ -91,7 +85,7 @@ class CommentInputBox extends Component {
             style={this.state.comment_border}
             placeholder="Your comment"
             value={this.state.comment_message}
-            onChange={this.handleChange}>      
+            onChange={this.handleChange}>
           </textarea>
         </div>
         {this.state.comment_message.length > 0 && <div className="comment_button_container">

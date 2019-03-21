@@ -31,7 +31,7 @@ router.post('/bookmark/add', (req, res) => {
       console.log(err);
       res.send({status: 'failed'});
     } else {
-      res.json({data: results});
+      res.json({status: 'success'});
     }
   });
 });

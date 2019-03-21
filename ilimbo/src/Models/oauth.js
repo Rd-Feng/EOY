@@ -24,7 +24,11 @@ class OAuth extends Component {
           localStorage.setItem("id_token", JSON.stringify(response.id));
           localStorage.setItem("ImgUrl", JSON.stringify(response.img_url));
           localStorage.setItem("Fullname", JSON.stringify(response.first_name + ' ' + response.last_name));
+          this.props.history.push('/home');
         })
+    }
+    if (localStorage.getItem('id_token')) {
+      return (<a onClick={() => {localStorage.clear(); this.props.history.push('/')}}>Logout</a>)
     }
     return (
       <GoogleLogin

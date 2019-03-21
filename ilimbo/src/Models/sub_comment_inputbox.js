@@ -17,7 +17,6 @@ class SubCommentInputBox extends Component {
       id: JSON.parse(localStorage.getItem("id_token")),
       sub_comment_message: '',
       comment_id: this.props.comment_id
-      
     }
   }
   componentDidMount() {
@@ -47,8 +46,7 @@ class SubCommentInputBox extends Component {
   }
 
   handleComment(){
-    if(this.state.comment_id){
-      
+    if(JSON.parse(localStorage.getItem("id_token"))){
       fetch('http://localhost:4000/subcomment', {
         method: 'POST',
         headers: {
@@ -57,20 +55,24 @@ class SubCommentInputBox extends Component {
         },
         body: JSON.stringify({
           "text": this.state.sub_comment_message,
-          "creator": this.state.id,
+          "creator": JSON.parse(localStorage.getItem("id_token")),
           "comment_id": this.state.comment_id
         })
       })
       .then(response => response.json())
       .then(response => {
-        if (response.status !== 'success')
-        {
+        if (response.status !== 'success') {
           this.setState({ err_msg: "Error"});
           let err = new Error();
           throw err;
+        } else {
+          this.setState({sub_comment_message: ''})
         }
       })
       .catch(err => console.log(err))
+    }
+    else{
+      alert("Login to comment")
     }
   }
   render() {
@@ -83,7 +85,7 @@ class SubCommentInputBox extends Component {
             style={this.state.comment_border}
             placeholder="Your reply"
             value={this.state.sub_comment_message}
-            onChange={this.handleChange}>      
+            onChange={this.handleChange}>
           </textarea>
         </div>
         {this.state.sub_comment_message.length > 0 && <div className="sub_comment_button_container">
