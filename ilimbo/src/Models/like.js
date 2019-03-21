@@ -39,6 +39,8 @@ class Like extends Component {
       .then(res => {
         if (res.status !== 'success') {
           alert('Unable to like/unlike at this time');
+        } else {
+          console.log({status: 'succcess'});
         }
       })
   }
@@ -50,6 +52,8 @@ class Like extends Component {
       .then(res => {
         if (res.status !== 'success') {
           alert('Unable to like/unlike at this time');
+        } else {
+          console.log({status: 'succcess'});
         }
       })
   }
