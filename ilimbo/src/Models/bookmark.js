@@ -7,7 +7,8 @@ class Bookmark extends Component {
   constructor(props) {
     super(props)
     this.state = {
-    	user_id: JSON.parse(localStorage.getItem("id_token"))
+    	user_id: JSON.parse(localStorage.getItem("id_token")),
+	bookmark: true
     }
   }
 
@@ -15,7 +16,7 @@ class Bookmark extends Component {
     let user_id = localStorage.getItem("id_token");
     let titles = [];
     if (this.props.location.pathname.split("/")[1] === 'profile') {
-      user_id = this.props.user_id;
+      this.setState({bookmark: false})
     }
     fetch('http://localhost:4000/bookmarks/' + user_id)
       .then(response => response.json())
@@ -59,7 +60,7 @@ class Bookmark extends Component {
     if (this.state.title) {
       cards = this.state.title.map((bookmark, index) => {
         let id = Object.keys(bookmark)[0]
-        if (this.props.match.params.user_id === this.state.user_id) {	
+        if (this.state.bookmark === true) {	
 	  return (
 	    <div class="card">
 	    <div class="card-details">
