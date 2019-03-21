@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Homeheader from '../home/header'
-import '../styles/connections.css'
+import './styles/connections.css'
 import {withRouter} from 'react-router-dom';
 
 class Connections extends Component {
