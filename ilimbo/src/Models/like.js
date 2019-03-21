@@ -14,18 +14,25 @@ class Like extends Component {
   }
 
   handleLike() {
+    let commentType = this.props.isSubcomment ? "subcomment" : "comment";
     if (JSON.parse(localStorage.getItem("id_token"))) {
       this.setState({ check_like: !this.state.check_like });
       let numLikes = this.state.likes
       if (!this.state.check_like) {
-        numLikes++
-        this.setState({ like_color: { 'color': 'red' }, likes: numLikes });
-        this.incrNumLikes();
+        fetch(process.env.REACT_APP_API  + '/' + commentType + '/' + this.state.comment_id)
+          .then(response => response.json())
+          .then(response => {
+            this.setState({ like_color: { 'color': 'red' }, likes: response.data[0].likes+1 });
+            this.incrNumLikes();
+          })
       }
       else {
-        numLikes--
-        this.setState({ like_color: { 'color': '#A6A6A6' }, likes: numLikes });
-        this.decrNumLikes();
+        fetch(process.env.REACT_APP_API  + '/' + commentType + '/' + this.state.comment_id)
+          .then(response => response.json())
+          .then(response => {
+            this.setState({ like_color: { 'color': '#A6A6A6' }, likes: response.data[0].likes-1 });
+            this.decrNumLikes();
+          })
       }
     }
     else {
