@@ -12,7 +12,7 @@ class Profile extends Component {
     this.state = {
       showFollw: true,
       showBookmark: false,
-      follow_color: { 'backgroundColor': 'lightcyan' },
+      follow_color: { 'backgroundColor': 'lightcyan', 'color': 'black'},
       bookmark_color: {}
     }
   }
@@ -42,10 +42,10 @@ class Profile extends Component {
   }
 
   handleFollow() {
-    this.setState({ showFollw: true, showBookmark: false, bookmark_color: {}, follow_color: { 'backgroundColor': 'lightcyan' } })
+    this.setState({ showFollw: true, showBookmark: false, bookmark_color: {}, follow_color: { 'backgroundColor': '#cce6ff', 'color': 'black' } })
   }
   handleBookMark() {
-    this.setState({ showFollw: false, showBookmark: true, follow_color: {}, bookmark_color: { 'backgroundColor': 'lavender' } })
+    this.setState({ showFollw: false, showBookmark: true, follow_color: {}, bookmark_color: { 'backgroundColor': '#b3ccff', 'color': 'black' } })
   }
   render() {
     console.log(this.state.user_info)
@@ -57,7 +57,7 @@ class Profile extends Component {
           <div className="follow_btn"> <ConnectionBtn profile_id={this.props.match.params.user_id}/></div>
           <div className="profile_name">
             <div>{this.state.user_firstname} {this.state.user_lastname}</div>
-            <div className="profile_email">{this.state.user_emal}</div>
+            <div className="profile_email">&#x2709; {this.state.user_emal}</div>
           </div>
 
         </div>
