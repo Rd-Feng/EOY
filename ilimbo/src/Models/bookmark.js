@@ -16,6 +16,7 @@ class Bookmark extends Component {
     let user_id = localStorage.getItem("id_token");
     let titles = [];
     if (this.props.location.pathname.split("/")[1] === 'profile') {
+      user_id = this.props.match.params.user_id;
       this.setState({ bookmark: false })
     }
     fetch(process.env.REACT_APP_API + '/bookmarks/' + user_id)
@@ -84,7 +85,7 @@ class Bookmark extends Component {
       })
     }
     if (cards.length === 0) {
-      cards = 
+      cards =
         <div className="null-bookmark"> No bookmarks found </div>
     }
     let navbar = <div> </div>
@@ -93,7 +94,7 @@ class Bookmark extends Component {
     }
     return (
       <div className="bookmarkpage">
-        
+
         {navbar}
         <div className="bookmark-container">
 	  {cards}
