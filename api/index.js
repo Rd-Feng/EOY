@@ -112,7 +112,7 @@ app.post('/verify', cors(corsOptions), (req, res) => {
 });
 
 app.get('/', (req, res) => {
-  res.send(`Hello from port ${PORT}`)
+  res.send(`Hello from port ${PORT} at ${new Date()}`)
 });
 
 app.get('/users', (req, res) => {
