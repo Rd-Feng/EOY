@@ -61,14 +61,14 @@
 }
 .profile_follow{
   background-color: #cce6ff;
-  height: 100vh;
-  padding: 5%;
+  height: 200vh;
+  padding: 3% 8%;
   overflow: scroll;
 }
 .profile_bookmark{
   background-color: #b3ccff;
-  height: 100vh;
-  padding: 5%;
+  height: 200vw;
+  padding: 3% 8%;
   overflow: scroll;
 }
 .edit_btn{

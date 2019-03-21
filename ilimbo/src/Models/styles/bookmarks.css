@@ -7,7 +7,7 @@
 
 
 .bk-card {
-  background: #fff;
+  background: papayawhip;
   border-radius: 2px;
   box-shadow: -1px 2px 4px rgba(0,0,0,.25), 1px 1px 3px rgba(0,0,0,.1);
   margin: 10px;
@@ -27,9 +27,9 @@
   flex-wrap: wrap;
   justify-content: space-between;
 }
-.bk_bg{
+/* .bk_bg{
   background: lavender;
-}
+} */
 .bookmark-link {
   text-align: center
 }
