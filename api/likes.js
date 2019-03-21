@@ -14,13 +14,12 @@ const connection = (() => {
 })();
 
 router.get('/comment/:id/like', (req, res) => {
-  console.log('I am liking comment:::', 'UPDATE comments SET likes=likes+1 WHERE id=' + connection.escape(req.params.id));
   connection.query('UPDATE comments SET likes=likes+1 WHERE id=' + connection.escape(req.params.id), (err) => {
     if (err) {
       console.log(err);
       res.send({status: 'failed'});
     } else {
-      res.send({status: 'success'});
+      res.send({status: 'success', query: 'I am liking comment:::', 'UPDATE comments SET likes=likes+1 WHERE id=' + connection.escape(req.params.id)});
     }
   });
 });
@@ -31,7 +30,7 @@ router.get('/comment/:id/unlike', (req, res) => {
       console.log(err);
       res.send({status: 'failed'});
     } else {
-      res.send({status: 'success'});
+      res.send({status: 'success', query: 'I am liking comment:::', 'UPDATE comments SET likes=likes+1 WHERE id=' + connection.escape(req.params.id)});
     }
   });
 });
