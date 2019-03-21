@@ -34,7 +34,7 @@ class Like extends Component {
   }
   incrNumLikes() {
     let commentType = this.props.isSubcomment ? "subcomment" : "comment";
-    fetch(process.env.REACT_APP_API  + '/' + commentType + '/' + this.state.comment_id + '/like')
+    fetch(process.env.REACT_APP_API  + '/' + commentType + '_action' + '/' + this.state.comment_id + '/like')
       .then(res => res.json())
       .then(res => {
         console.log(res);
@@ -43,7 +43,7 @@ class Like extends Component {
 
   decrNumLikes() {
     let commentType = this.props.isSubcomment ? "subcomment" : "comment";
-    fetch(process.env.REACT_APP_API + '/' +commentType + '/' + this.state.comment_id + '/unlike')
+    fetch(process.env.REACT_APP_API + '/' +commentType + '_action' + '/' + this.state.comment_id + '/unlike')
       .then(res => res.json())
       .then(res => {
         console.log(res);

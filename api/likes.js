@@ -35,7 +35,7 @@ router.get('/comment_action/:id/unlike', (req, res) => {
   });
 });
 
-router.get('/subcomment/:id/like', (req, res) => {
+router.get('/subcomment_action/:id/like', (req, res) => {
   connection.query('UPDATE subcomments SET likes=likes+1 WHERE id=' + connection.escape(req.params.id), (err) => {
     if (err) {
       console.log(err);
@@ -46,7 +46,7 @@ router.get('/subcomment/:id/like', (req, res) => {
   });
 });
 
-router.get('/subcomment/:id/unlike', (req, res) => {
+router.get('/subcomment_action/:id/unlike', (req, res) => {
   connection.query('UPDATE subcomments SET likes=likes-1 WHERE id=' + connection.escape(req.params.id), (err) => {
     if (err) {
       console.log(err);
