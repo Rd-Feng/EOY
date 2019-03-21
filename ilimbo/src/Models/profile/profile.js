@@ -12,7 +12,7 @@ class Profile extends Component {
     this.state = {
       showFollw: true,
       showBookmark: false,
-      follow_color: { 'backgroundColor': 'lightcyan', 'color': 'black'},
+      follow_color: { 'backgroundColor': '#cce6ff', 'color': 'black'},
       bookmark_color: {}
     }
   }
@@ -20,7 +20,6 @@ class Profile extends Component {
     fetch('http://localhost:4000/user/' + this.props.location.pathname.split("/")[2])
       .then(response => response.json())
       .then(response => {
-        console.log(response.data[0])
         this.setState({
           user_firstname: response.data[0].first_name,
           user_lastname: response.data[0].last_name,
@@ -48,7 +47,6 @@ class Profile extends Component {
     this.setState({ showFollw: false, showBookmark: true, follow_color: {}, bookmark_color: { 'backgroundColor': '#b3ccff', 'color': 'black' } })
   }
   render() {
-    console.log(this.state.user_info)
     return (
       <div >
         <HomeHeader />
