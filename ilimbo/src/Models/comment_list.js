@@ -21,7 +21,18 @@ class CommentList extends Component {
     if (!this.props.article_id) {
       return;
     }
-    fetch(process.env.REACT_APP_API + '/comments/' +  this.state.article_id)
+    fetch(process.env.REACT_APP_API + '/comments/' +  this.state.article_id, {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'cache-control': 'no-cache',
+        'pragma': 'no-cache'
+      },
+      body: JSON.stringify({
+        token: response.getAuthResponse().id_token
+      })
+    })
       .then(response => response.json())
       .then(response => {
         this.setState({ comment_list: response.data });
