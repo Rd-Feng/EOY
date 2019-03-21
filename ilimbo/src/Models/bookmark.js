@@ -72,7 +72,7 @@ class Bookmark extends Component {
       cards = <div className="null-container"> <div className="null-bookmark"> No bookmarks found </div> </div>
     }
     return (
-      <div className="bookmark-page">
+      <div className="bookmarkpage">
         {cards}
       </div>
     )
