@@ -69,7 +69,7 @@ class Bookmark extends Component {
       })    
     }
     if (cards.length === 0) {
-      cards = <div className="null-container"> <div className="null-bookmark"> No bookmarks found </div> <div className="null-image"> <img src="https://i.pinimg.com/originals/69/60/8c/69608c0575dfc760c33b5a2c3c8fe98f.png"/> </div>  </div>
+      cards = <div className="null-container"> <div className="null-bookmark"> No bookmarks found </div> </div>
     }
     return (
       <div className="bookmark-page">
