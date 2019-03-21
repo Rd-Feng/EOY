@@ -63,10 +63,9 @@ class Navbar extends Component {
               <h1>&#9776;</h1></div>{!this.state.isHidden && <ResNavbar />}
             <div className="collapse navbar-collapse">
               <ul className={(this.state.isScroll) ? 'nav navbar-nav navbar-text-color' : 'nav navbar-nav navbar-nav-bg'}>
-                <li className="active">
-                  <a onClick={() => this.handleHome()}>Home</a></li>
-                <li><a href={'http://localhost:3000/profile/' + JSON.parse(localStorage.getItem("id_token"))}>Profile</a></li>
-                <li><a href='http://localhost:3000/bookmark'>Bookmark</a></li>
+                {localStorage.getItem('id_token') && <li className="active"><a onClick={() => this.handleHome()}>Home</a></li>}
+                {localStorage.getItem('id_token') && <li><a href={'http://localhost:3000/profile/' + JSON.parse(localStorage.getItem("id_token"))}>Profile</a></li>}
+                {localStorage.getItem('id_token') && <li><a href='http://localhost:3000/bookmark'>Bookmark</a></li>}
                 <li><Oauth /></li>
               </ul>
             </div>

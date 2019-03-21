@@ -13,7 +13,10 @@ class Bookmark extends Component {
 
   componentDidMount() {
     let user_id = localStorage.getItem("id_token");
-    let titles = []
+    let titles = [];
+    if (this.props.location.pathname.split("/")[1] === 'profile') {
+      user_id = this.props.user_id;
+    }
     fetch('http://localhost:4000/bookmarks/' + user_id)
       .then(response => response.json())
       .then(response => {
@@ -56,16 +59,27 @@ class Bookmark extends Component {
     if (this.state.title) {
       cards = this.state.title.map((bookmark, index) => {
         let id = Object.keys(bookmark)[0]
-	console.log(this.state.bookmarks[index])
-	return (
-  	  <div class="card">
-          <div class="card-details">
-            <h2 class="card-head"> {bookmark[id]} </h2>
-            <a href="#/" class="card-action-button" onClick={(e) => {this.removeBookmark(e.target.id);}} id={id} >REMOVE</a>
-            <a href="#/" class="card-action-button" onClick={() => {this.linkHandler(id);}}>READ</a>
-          </div>
-        </div>
-        )
+        if (this.props.match.params.user_id === this.state.user_id) {	
+	  return (
+	    <div class="card">
+	    <div class="card-details">
+	      <h2 class="card-head"> {bookmark[id]} </h2>
+	      <a href="#/" class="card-action-button" onClick={(e) => {this.removeBookmark(e.target.id);}} id={id} >REMOVE</a>
+	      <a href="#/" class="card-action-button" onClick={() => {this.linkHandler(id);}}>READ</a>
+	    </div>
+	  </div>
+	  )
+	}
+        else {
+          return (
+	    <div class="card">
+	    <div class="card-details">
+	      <h2 class="card-head"> {bookmark[id]} </h2>
+	      <a href="#/" class="card-action-button" onClick={() => {this.linkHandler(id);}}>READ</a>
+	    </div>
+	  </div>
+	  )
+        }
       })
     }
     if (cards.length === 0) {

@@ -79,7 +79,7 @@ class Profile extends Component {
         </div>
         <div className="profile_content_container">
           {this.state.showFollw && <div className="profile_follow"><Connection /> </div>}
-          {this.state.showBookmark && <div className="profile_bookmark"><Bookmark /></div>}
+          {this.state.showBookmark && <div className="profile_bookmark"><Bookmark user_id={this.props.match.params.user_id}/></div>}
 
 
         </div>
