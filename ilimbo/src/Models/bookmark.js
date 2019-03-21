@@ -62,21 +62,21 @@ class Bookmark extends Component {
         let id = Object.keys(bookmark)[0]
         if (this.state.bookmark === true) {	
 	  return (
-	    <div class="card">
-	    <div class="card-details">
-	      <h2 class="card-head"> {bookmark[id]} </h2>
-	      <a href="#/" class="card-action-button" onClick={(e) => {this.removeBookmark(e.target.id);}} id={id} >REMOVE</a>
-	      <a href="#/" class="card-action-button" onClick={() => {this.linkHandler(id);}}>READ</a>
+	    <div className="card">
+	    <div className="card-details">
+	      <h2 className="card-head"> {bookmark[id]} </h2>
+	      <a className="card-action-button" onClick={(e) => {this.removeBookmark(e.target.id);}} id={id} >REMOVE</a>
+	      <a href={"http://localhost:3000/history/" + id} className="card-action-button">READ</a>
 	    </div>
 	  </div>
 	  )
 	}
         else {
           return (
-	    <div class="card">
-	    <div class="card-details">
-	      <h2 class="card-head"> {bookmark[id]} </h2>
-	      <a href="#/" class="card-action-button" onClick={() => {this.linkHandler(id);}}>READ</a>
+	    <div className="card">
+	    <div className="card-details">
+	      <h2 className="card-head"> {bookmark[id]} </h2>
+	      <a href={"http://localhost:3000/history/" + id} className="card-action-button">READ</a>
 	    </div>
 	  </div>
 	  )
@@ -86,8 +86,13 @@ class Bookmark extends Component {
     if (cards.length === 0) {
       cards = <div className="null-container"> <div className="null-bookmark"> No bookmarks found </div> </div>
     }
+    let navbar = <div> </div>
+    if (this.state.bookmark) {
+      navbar = <Homeheader/>
+    }
     return (
       <div className="bookmarkpage">
+        {navbar}
         {cards}
       </div>
     )
