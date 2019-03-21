@@ -47,7 +47,6 @@ class ConnectionButton extends Component {
     .then(response => response.json())
     .then(response => {
       if (response.status === 'success') {
-        console.log('success')
         if (action === 'follow') {
           document.getElementById('unfollow').style.display = 'block';
           document.getElementById('follow').style.display = 'none';

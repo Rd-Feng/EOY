@@ -12,17 +12,6 @@ class Reply extends Component {
       comment_id: this.props.comment_id
     }
   }
-
-  // componentDidMount() {
-  //   this.setState({
-  //     user_id: this.props.user_id,
-  //     text: this.props.text,
-  //     created_at: this.props.created_at,
-  //     likes: this.props.likes,
-  //     sub_count: this.props.sub_count,
-  //     comment_id: this.props.comment_id
-  //   }, () => this.userInfo());
-  // }
   handleReply() {
     this.setState({ show_reply: !this.state.show_reply });
   }

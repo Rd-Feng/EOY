@@ -66,7 +66,6 @@ class BookmarkButton extends Component {
       .then(res => res.json())
       .then(res => {
         for (let entry of res.data) {
-          console.log(entry.item_id);
 	  if (entry.item_id === this.props.item_id) {
             resolve("false");
 	  }
