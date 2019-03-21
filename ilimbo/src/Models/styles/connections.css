@@ -3,10 +3,11 @@
   font-size: 30px;
   border: 1px #DDDDDD solid;
 }
-
-.bookmark-page {
-  background-color: #ededed;
-  font: normal 14px / 20px 'Roboto', sans-serif;
+.null-connection{
+  font-size: 30px;
+  margin: 5%;
+  display: table-cell;
+  text-align: center;
 }
 
 .null-container {
@@ -15,13 +16,6 @@
   height: 100%;
   width: 100%;
   text-align: center;
-}
-
-.null-bookmark {
-  font-size: 30px;
-  margin: 5%;
-  display: table-cell;
-  vertical-align: middle;
 }
 
 .null-image {

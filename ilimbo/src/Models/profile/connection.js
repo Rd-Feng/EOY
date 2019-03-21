@@ -65,7 +65,7 @@ class Connections extends Component {
       })
     }
     if (cards.length === 0) {
-      cards = <div className="null-container"> <div className="null-connection"> No connections found </div> </div>
+      cards =  <div className="null-connection"> No connections found </div> 
     }
     return (
       <div className="connection-page">
