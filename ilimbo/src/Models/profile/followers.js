@@ -13,13 +13,19 @@ class Followers extends Component {
   }
   componentDidMount() {
     let f_id = this.props.match.params.user_id;
-    fetch(process.env.REACT_APP_API + '/connections/followers/' + f_id)
+    let myHeaders = new Headers();
+    myHeaders.append('pragma', 'no-cache');
+    myHeaders.append('cache-control', 'no-cache');
+    let myInit = {
+      method: 'GET',
+      headers: myHeaders,
+    };
+    fetch(process.env.REACT_APP_API + '/connections/followers/' + f_id, myInit)
     .then(response => response.json())
     .then(response => {
-      console.log(response.data)
       this.setState({ connections: response.data }, () => {
         this.state.connections.forEach(connection => {
-          fetch(process.env.REACT_APP_API + '/user/' + connection.user_id)
+          fetch(process.env.REACT_APP_API + '/user/' + connection.user_id, myInit)
           .then(res => res.json())
           .then(res => {
             this.state.follow.push(res.data[0]);

@@ -20,7 +20,14 @@ class Profile extends Component {
     }
   }
   componentDidMount() {
-    fetch(process.env.REACT_APP_API + '/user/' + this.props.location.pathname.split("/")[2])
+    let myHeaders = new Headers();
+    myHeaders.append('pragma', 'no-cache');
+    myHeaders.append('cache-control', 'no-cache');
+    let myInit = {
+      method: 'GET',
+      headers: myHeaders,
+    };
+    fetch(process.env.REACT_APP_API + '/user/' + this.props.location.pathname.split("/")[2], myInit)
       .then(response => response.json())
       .then(response => {
         this.setState({
@@ -35,12 +42,19 @@ class Profile extends Component {
         });
       })
       .then(response => {
-        fetch(process.env.REACT_APP_API + '/connections/' + this.props.location.pathname.split("/")[2])
+        let myHeaders = new Headers();
+        myHeaders.append('pragma', 'no-cache');
+        myHeaders.append('cache-control', 'no-cache');
+        let myInit = {
+          method: 'GET',
+          headers: myHeaders,
+        };
+        fetch(process.env.REACT_APP_API + '/connections/' + this.props.location.pathname.split("/")[2], myInit)
           .then(response => response.json())
           .then(response => {
             this.setState({ connection_count: response.data.length, connection: response.data });
           });
-        fetch(process.env.REACT_APP_API + '/connections/followers/' + this.props.location.pathname.split("/")[2])
+        fetch(process.env.REACT_APP_API + '/connections/followers/' + this.props.location.pathname.split("/")[2], myInit)
           .then(response => response.json())
           .then(response => {
             this.setState({ follower_count: response.data.length, follower: response.data });

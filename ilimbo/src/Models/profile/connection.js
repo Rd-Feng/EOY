@@ -13,12 +13,19 @@ class Connections extends Component {
   }
   componentDidMount() {
     let user_id = this.props.match.params.user_id;
-    fetch(process.env.REACT_APP_API + '/connections/' + user_id)
+    let myHeaders = new Headers();
+    myHeaders.append('pragma', 'no-cache');
+    myHeaders.append('cache-control', 'no-cache');
+    let myInit = {
+      method: 'GET',
+      headers: myHeaders,
+    };
+    fetch(process.env.REACT_APP_API + '/connections/' + user_id, myInit)
     .then(response => response.json())
     .then(response => {
       this.setState({ connections: response.data }, () => {
         this.state.connections.forEach(connection => {
-          fetch(process.env.REACT_APP_API + '/user/' + connection.f_id)
+          fetch(process.env.REACT_APP_API + '/user/' + connection.f_id, myInit)
           .then(res => res.json())
           .then(res => {
             this.state.follow.push(res.data[0]);

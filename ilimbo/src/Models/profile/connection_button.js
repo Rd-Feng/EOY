@@ -10,8 +10,15 @@ class ConnectionButton extends Component {
   componentWillMount () {
     let profile_id = this.props.profile_id;
     let user_id = JSON.parse(localStorage.getItem('id_token'));
+    let myHeaders = new Headers();
+    myHeaders.append('pragma', 'no-cache');
+    myHeaders.append('cache-control', 'no-cache');
+    let myInit = {
+      method: 'GET',
+      headers: myHeaders,
+    };
     if (user_id !== profile_id) {
-      fetch(process.env.REACT_APP_API + '/connections/' + user_id)
+      fetch(process.env.REACT_APP_API + '/connections/' + user_id, myInit)
         .then(response => response.json())
         .then(response => {
           let connections = [];

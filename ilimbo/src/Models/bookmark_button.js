@@ -12,7 +12,14 @@ class BookmarkButton extends Component {
     let user_id = localStorage.getItem("id_token");
     if (user_id) {
       user_id = JSON.parse(user_id);
-      fetch(process.env.REACT_APP_API + '/bookmarks/' + user_id)
+      let myHeaders = new Headers();
+      myHeaders.append('pragma', 'no-cache');
+      myHeaders.append('cache-control', 'no-cache');
+      let myInit = {
+        method: 'GET',
+        headers: myHeaders,
+      };
+      fetch(process.env.REACT_APP_API + '/bookmarks/' + user_id, myInit)
         .then(response => response.json())
         .then(response => {
           let bookmarks = [];
@@ -57,21 +64,6 @@ class BookmarkButton extends Component {
           document.getElementById('bookmark').style.display = 'block';
         }
       }
-    })
-  }
-
-  checkDuplicateBookmark() {
-    return new Promise((resolve, reject) => {
-      fetch(process.env.REACT_APP_API + '/bookmarks/' + localStorage.getItem("id_token"))
-      .then(res => res.json())
-      .then(res => {
-        for (let entry of res.data) {
-	  if (entry.item_id === this.props.item_id) {
-            resolve("false");
-	  }
-        }
-        resolve("true");
-      })
     })
   }
   render() {

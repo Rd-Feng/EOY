@@ -19,7 +19,14 @@ class Bookmark extends Component {
       user_id = this.props.match.params.user_id;
       this.setState({ bookmark: false })
     }
-    fetch(process.env.REACT_APP_API + '/bookmarks/' + user_id)
+    let myHeaders = new Headers();
+    myHeaders.append('pragma', 'no-cache');
+    myHeaders.append('cache-control', 'no-cache');
+    let myInit = {
+      method: 'GET',
+      headers: myHeaders,
+    };
+    fetch(process.env.REACT_APP_API + '/bookmarks/' + user_id, myInit)
       .then(response => response.json())
       .then(response => {
         this.setState({ bookmarks: response.data }, () => {

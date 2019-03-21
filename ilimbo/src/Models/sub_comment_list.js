@@ -22,16 +22,21 @@ class SubCommentList extends Component {
     clearInterval(this.interval);
   }
   subCommentInfo() {
-    fetch(process.env.REACT_APP_API + '/subcomments/' + this.state.comment_id)
+    let myHeaders = new Headers();
+    myHeaders.append('pragma', 'no-cache');
+    myHeaders.append('cache-control', 'no-cache');
+    let myInit = {
+      method: 'GET',
+      headers: myHeaders,
+    };
+    fetch(process.env.REACT_APP_API + '/subcomments/' + this.state.comment_id, myInit)
       .then(response => response.json())
       .then(response => {
         let subcomments = response.data;
-        fetch(process.env.REACT_APP_API + '/comment/' + this.props.comment_id)
-          .then(response => response.json())
-          .then(response => this.setState({
-            sub_count: response.data[0].sub_count,
-            sub_comment_info: subcomments
-          }))
+        this.setState({
+          sub_count: response.data.length,
+          sub_comment_info: response.data
+        });
       });
   }
 

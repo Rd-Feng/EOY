@@ -24,7 +24,14 @@ class ProfileEdit extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   componentDidMount () {
-    fetch(process.env.REACT_APP_API+'/user/' + this.props.match.params.user_id)
+    let myHeaders = new Headers();
+    myHeaders.append('pragma', 'no-cache');
+    myHeaders.append('cache-control', 'no-cache');
+    let myInit = {
+      method: 'GET',
+      headers: myHeaders,
+    };
+    fetch(process.env.REACT_APP_API+'/user/' + this.props.match.params.user_id, myInit)
       .then(response => response.json())
       .then(response => this.setState({...response.data[0]}))
   }
