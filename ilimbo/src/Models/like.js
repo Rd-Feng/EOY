@@ -24,7 +24,7 @@ class Like extends Component {
     fetch(process.env.REACT_APP_API  + '/' + commentType + '/' + this.state.comment_id, myInit)
       .then(response => response.json())
       .then(response => {
-        this.setState(likes: response.data[0].likes });
+        this.setState({likes: response.data[0].likes });
       })
   }
   handleLike() {
