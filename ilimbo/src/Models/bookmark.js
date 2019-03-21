@@ -18,7 +18,7 @@ class Bookmark extends Component {
     if (this.props.location.pathname.split("/")[1] === 'profile') {
       this.setState({ bookmark: false })
     }
-    fetch('http://localhost:4000/bookmarks/' + user_id)
+    fetch(process.env.REACT_APP_API + '/bookmarks/' + user_id)
       .then(response => response.json())
       .then(response => {
         this.setState({ bookmarks: response.data }, () => {
@@ -36,7 +36,7 @@ class Bookmark extends Component {
       })
   }
   removeBookmark(id) {
-    fetch('http://localhost:4000/bookmark/remove', {
+    fetch(process.env.REACT_APP_API+ '/bookmark/remove', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -66,7 +66,7 @@ class Bookmark extends Component {
               <div className="card-details">
                 <h2 className="card-head"> {bookmark[id]} </h2>
                 <a className="card-action-button" onClick={(e) => { this.removeBookmark(e.target.id); }} id={id} >REMOVE</a>
-                <a href={"http://localhost:3000/history/" + id} className="card-action-button">READ</a>
+                <a href={process.env.REACT_APP_DOMAIN + "/history/" + id} className="card-action-button">READ</a>
               </div>
             </div>
           )
@@ -76,7 +76,7 @@ class Bookmark extends Component {
             <div className="card">
               <div className="card-details">
                 <h2 className="card-head"> {bookmark[id]} </h2>
-                <a href={"http://localhost:3000/history/" + id} className="card-action-button">READ</a>
+                <a href={process.env.REACT_APP_DOMAIN + "/history/" + id} className="card-action-button">READ</a>
               </div>
             </div>
           )
@@ -93,8 +93,11 @@ class Bookmark extends Component {
     }
     return (
       <div className="bookmarkpage">
+        
         {navbar}
-        {cards}
+        <div className="bookmark-container">
+	  {cards}
+	</div>
       </div>
     )
   }

@@ -47,7 +47,7 @@ class SubCommentInputBox extends Component {
 
   handleComment(){
     if(JSON.parse(localStorage.getItem("id_token"))){
-      fetch('http://localhost:4000/subcomment', {
+      fetch(process.env.REACT_APP_API + '/subcomment', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',

@@ -21,7 +21,7 @@ class CommentList extends Component {
     if (!this.props.article_id) {
       return;
     }
-    fetch('http://localhost:4000/comments/' +  this.state.article_id)
+    fetch(process.env.REACT_APP_API + '/comments/' +  this.state.article_id)
       .then(response => response.json())
       .then(response => {
         this.setState({ comment_list: response.data });

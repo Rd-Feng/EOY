@@ -22,11 +22,11 @@ class SubCommentList extends Component {
     clearInterval(this.interval);
   }
   subCommentInfo() {
-    fetch('http://localhost:4000/subcomments/' + this.state.comment_id)
+    fetch(process.env.REACT_APP_API + '/subcomments/' + this.state.comment_id)
       .then(response => response.json())
       .then(response => {
         let subcomments = response.data;
-        fetch('http://localhost:4000/comment/' + this.props.comment_id)
+        fetch(process.env.REACT_APP_API + '/comment/' + this.props.comment_id)
           .then(response => response.json())
           .then(response => this.setState({
             sub_count: response.data[0].sub_count,

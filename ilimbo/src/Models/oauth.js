@@ -9,7 +9,7 @@ class OAuth extends Component {
       if (response.error) {
         return;
       }
-      fetch('http://localhost:4000/verify', {
+      fetch(process.env.REACT_APP_API + '/verify', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
