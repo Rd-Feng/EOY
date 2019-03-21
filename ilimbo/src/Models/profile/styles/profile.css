@@ -1,15 +1,20 @@
 .profile_header{
-  /* position: relative; */
-  
-  /* z-index: 2; */
-  background-color:lightblue;
+  background-size: cover; 
+  background-repeat: no-repeat;
+  /* background-image: url('http://wowslider.com/sliders/demo-10/data/images/dock.jpg'); */
+  background-image: url("https://www.handycats.com/wp-content/uploads/2017/09/1657b3cea5bb265.jpg");
+  /* background-image: url('https://images.sharefaith.com/images/3/1473711383512_13/img_mouseover3.jpg') */
 }
-
+.profile_email{
+  font-size: 14px;
+  color: white;
+}
 .profile_name{
   padding: 90px 10px 75px 10px;
   color: black;
   font-size: 30px;
   text-align: center;
+  color: white;
 }
 
 .profile_info_container button{
@@ -23,7 +28,7 @@
 }
 .profile_info_container button:hover{
   color: black;
-  background-color:white;
+  background-color: cadetblue;
 }
 .profile_info_container{
   display: flex;
@@ -55,29 +60,31 @@
   margin-right: 10px;
 }
 .profile_follow{
-  background-color: lightcyan;
+  background-color: #cce6ff;
   height: 100vh;
   padding: 5%;
+  /* margin: 0px 20px; */
+  /* border-left: 2px solid black;
+  border-right: 2px solid black; */
 }
 .profile_bookmark{
-  background-color: lavender;
+  background-color: #b3ccff;
   height: 100vh;
+  padding: 5%;
 }
 .edit_btn{
   margin: 20px 10px;
   background-color: transparent;
   border: none;
   outline: none !important;
+  color:white;
 }
 
 .edit_btn:hover{
-  color: gray;
+  color: lightblue;
 }
 
 .follow_btn{
   float: right;
   margin: 20px 10px;
-}
-.profile_email{
-  font-size: 13px;
 }
