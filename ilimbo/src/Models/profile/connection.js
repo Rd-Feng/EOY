@@ -58,7 +58,7 @@ class Connections extends Component {
 	    <div class="card-details">
 	      <h2 class="card-head"> {arr[0] + ' ' +arr[1]}</h2>
 	      <h2 class="card-body"> {arr[2]} </h2>
-	      <a href="#/" class="card-action-button" onClick={(e) => {this.visitConnection(e.target.id);}} id={connection.f_id}> PROFILE </a>
+	      <a class="card-action-button" onClick={(e) => {this.visitConnection(e.target.id);}} id={connection.f_id}> PROFILE </a>
 	    </div>
 	  </div>
         )
