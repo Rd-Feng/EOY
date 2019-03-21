@@ -13,7 +13,10 @@ class Bookmark extends Component {
 
   componentDidMount() {
     let user_id = localStorage.getItem("id_token");
-    let titles = []
+    let titles = [];
+    if (this.props.location.pathname.split("/")[1] === 'profile') {
+      user_id = this.props.user_id;
+    }
     fetch('http://localhost:4000/bookmarks/' + user_id)
       .then(response => response.json())
       .then(response => {
