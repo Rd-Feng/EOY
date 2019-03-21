@@ -5,7 +5,7 @@ const cors = require('cors');
 const schedule = require('node-schedule');
 const {OAuth2Client} = require('google-auth-library');
 const request = require('request');
-const CLIENT_ID = '959614478231-rhsbohn77k2664h64phq1v128lqp78l9.apps.googleusercontent.com'; /* TODO: put it as env */
+const CLIENT_ID = '447724909836-ip4833mlicofoka8gaukf2ohm3tqacu0.apps.googleusercontent.com'; /* TODO: put it as env */
 const client = new OAuth2Client(CLIENT_ID);
 let ARTICLE_TODAY = '19420532';
 

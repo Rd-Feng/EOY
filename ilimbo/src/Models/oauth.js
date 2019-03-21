@@ -32,7 +32,7 @@ class OAuth extends Component {
     }
     return (
       <GoogleLogin
-        clientId="959614478231-rhsbohn77k2664h64phq1v128lqp78l9.apps.googleusercontent.com"
+        clientId="447724909836-ip4833mlicofoka8gaukf2ohm3tqacu0.apps.googleusercontent.com"
         buttonText="Login"
         onSuccess={responseGoogle}
         onFailure={responseGoogle}
