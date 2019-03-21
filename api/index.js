@@ -43,7 +43,7 @@ app.use(require('./users'));
 app.use(require('./likes'));
 app.use(require('./connections'));
 
-const TEST = schedule.scheduleJob('0 15 13 * * *', () => {
+const TEST = schedule.scheduleJob({hour: 17, minute: 00}, () => {
   const GET_PAST_ITEMS = 'SELECT id FROM items';
   connection.query(GET_PAST_ITEMS, (err, results) => {
     if (err) {

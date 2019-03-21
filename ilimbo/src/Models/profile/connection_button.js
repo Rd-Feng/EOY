@@ -11,7 +11,7 @@ class ConnectionButton extends Component {
     let profile_id = this.props.profile_id;
     let user_id = JSON.parse(localStorage.getItem('id_token'));
     if (user_id !== profile_id) {
-      fetch('http://localhost:4000/connections/' + user_id)
+      fetch(process.env.REACT_APP_API + '/connections/' + user_id)
         .then(response => response.json())
         .then(response => {
           let connections = [];
@@ -33,7 +33,7 @@ class ConnectionButton extends Component {
       alert("please log in");
       return;
     }
-    fetch('http://localhost:4000/connections/' + (action === 'follow' ? 'connect' : 'disconnect'), {
+    fetch(process.env.REACT_APP_API + '/connections/' + (action === 'follow' ? 'connect' : 'disconnect'), {
       method: 'POST',
       headers: {
         'Accept': 'application/json',

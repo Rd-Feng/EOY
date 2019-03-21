@@ -12,7 +12,7 @@ class BookmarkButton extends Component {
     let user_id = localStorage.getItem("id_token");
     if (user_id) {
       user_id = JSON.parse(user_id);
-      fetch('http://localhost:4000/bookmarks/' + user_id)
+      fetch(process.env.REACT_APP_API + '/bookmarks/' + user_id)
         .then(response => response.json())
         .then(response => {
           let bookmarks = [];
@@ -35,7 +35,7 @@ class BookmarkButton extends Component {
       alert("please log in");
       return;
     }
-    fetch('http://localhost:4000/bookmark/' + (action === 'bookmark' ? 'add' : 'remove'), {
+    fetch(process.env.REACT_APP_API + '/bookmark/' + (action === 'bookmark' ? 'add' : 'remove'), {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -62,7 +62,7 @@ class BookmarkButton extends Component {
 
   checkDuplicateBookmark() {
     return new Promise((resolve, reject) => {
-      fetch('http://localhost:4000/bookmarks/' + localStorage.getItem("id_token"))
+      fetch(process.env.REACT_APP_API + '/bookmarks/' + localStorage.getItem("id_token"))
       .then(res => res.json())
       .then(res => {
         for (let entry of res.data) {

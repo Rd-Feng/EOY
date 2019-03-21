@@ -54,7 +54,7 @@ class CommentInputBox extends Component {
 
   }
   handleCommentPost(){
-    fetch('http://localhost:4000/comment', {
+    fetch(process.env.REACT_APP_API + '/comment', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
