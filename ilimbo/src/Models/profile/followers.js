@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Homeheader from '../home/header'
-import './styles/followers.css'
+import './styles/connections.css';
 import {withRouter} from 'react-router-dom';
 
 class Followers extends Component {
@@ -39,14 +39,15 @@ class Followers extends Component {
       if (this.state.follow) {
         cards = this.state.follow.map(connection => {
         return (
-          <div className="card" key={connection.id}>
-            <img src={connection.img_url} className="card-media" />
-            <div className="card-details">
-              <h2 className="card-head"> {connection.first_name} {connection.last_name}</h2>
-              <h2 className="card-body"> {connection.email} </h2>
-              <a className="card-action-button" href={process.env.REACT_APP_DOMAIN + '/profile/' + connection.id} id={connection.id}> PROFILE </a>
+          <a key={connection.id} className="card-action-button" href={process.env.REACT_APP_DOMAIN + '/profile/' + connection.id} id={connection.id}>
+            <div className="card" key={connection.id}>
+              <img src={connection.img_url} className="card-media" />
+              <div className="card-details">
+                <h2 className="card-head"> {connection.first_name} {connection.last_name}</h2>
+                <h2 className="card-body"> {connection.email} </h2>
+              </div>
             </div>
-          </div>
+          </a>
         )
       })
     }

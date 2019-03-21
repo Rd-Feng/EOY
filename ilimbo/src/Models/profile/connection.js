@@ -36,21 +36,22 @@ class Connections extends Component {
   render() {
     let cards = [];
       if (this.state.follow) {
-        cards = this.state.follow.map(connection => {        
-        return (       
-          <div className="card" key={connection.id}>
-            <img src={connection.img_url} className="card-media" />
-            <div className="card-details">
-              <h2 className="card-head"> {connection.first_name} {connection.last_name}</h2>
-              <h2 className="card-body"> {connection.email} </h2>
-              <a className="card-action-button" href={process.env.REACT_APP_DOMAIN + '/profile/' + connection.id} id={connection.id}> PROFILE </a>
+        cards = this.state.follow.map(connection => {
+        return (
+          <a key={connection.id} className="card-action-button" href={process.env.REACT_APP_DOMAIN + '/profile/' + connection.id} id={connection.id}>
+            <div className="card" >
+              <img src={connection.img_url} className="card-media" />
+              <div className="card-details">
+                <h2 className="card-head"> {connection.first_name} {connection.last_name}</h2>
+                <h2 className="card-body"> {connection.email} </h2>
+              </div>
             </div>
-          </div>
+          </a>
         )
       })
     }
     if (!this.state.found_connection) {
-      cards =  <div className="null-connection"> No connections found </div> 
+      cards =  <div className="null-connection"> No connections found </div>
     }
     return (
       <div className="connection-page">
