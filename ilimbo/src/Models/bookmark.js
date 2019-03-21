@@ -49,7 +49,7 @@ class Bookmark extends Component {
     })
   }
   linkHandler(id) {
-    this.props.history.push('/history/' + id); 
+    this.props.history.push('/history/' + id);
   }
   render() {
     let cards = [];
@@ -64,9 +64,9 @@ class Bookmark extends Component {
             <a href="#/" class="card-action-button" onClick={(e) => {this.removeBookmark(e.target.id);}} id={id} >REMOVE</a>
             <a href="#/" class="card-action-button" onClick={() => {this.linkHandler(id);}}>READ</a>
           </div>
-        </div>		
+        </div>
         )
-      })    
+      })
     }
     if (cards.length === 0) {
       cards = <div className="null-container"> <div className="null-bookmark"> No bookmarks found </div> </div>

@@ -35,7 +35,7 @@ class SubCommentBox extends Component {
         return (
           <li key={this.state.sub_id} className="sub-comment-item">
             <div className="comment-avatar">
-              <img src={d.img_url} alt="" />
+              <img src={d.img_url} alt="" onClick={() => this.props.history.push('/profile/' + d.id)}/>
             </div>
             <div className="comment-box">
               <div className="comment-head">

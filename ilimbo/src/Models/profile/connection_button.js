@@ -14,7 +14,10 @@ class ConnectionButton extends Component {
       fetch('http://localhost:4000/connections/' + user_id)
         .then(response => response.json())
         .then(response => {
-          let connections = response.data;
+          let connections = [];
+          for (let connection of response.data) {
+            connections.push(connection.f_id);
+          }
           if (connections.includes(profile_id)) {
             document.getElementById('follow').style.display = 'none';
             document.getElementById('unfollow').style.display = 'block';

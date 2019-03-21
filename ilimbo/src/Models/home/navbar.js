@@ -67,7 +67,7 @@ class Navbar extends Component {
                   <a onClick={() => this.handleHome()}>Home</a></li>
                 <li><a href={'http://localhost:3000/profile/' + JSON.parse(localStorage.getItem("id_token"))}>Profile</a></li>
                 <li><a href='http://localhost:3000/bookmark'>Bookmark</a></li>
-                <li><a onClick={() => this.handleLogout()}>Logout</a></li>
+                <li><Oauth /></li>
               </ul>
             </div>
           </div>
