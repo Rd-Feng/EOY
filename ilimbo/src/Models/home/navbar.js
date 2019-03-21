@@ -55,7 +55,7 @@ class Navbar extends Component {
           <div className="navbar-container">
             <div className="navbar-header">
               <a className="navbar-brand" href="/">
-                <h1>Limbo</h1>
+                <h1>!Limbo</h1>
               </a>
             </div>
 
