@@ -27,6 +27,9 @@ class OAuth extends Component {
           this.props.history.push('/home');
         })
     }
+    if (localStorage.getItem('id_token')) {
+      return (<a onClick={() => {localStorage.clear(); this.props.history.push('/')}}>Logout</a>)
+    }
     return (
       <GoogleLogin
         clientId="959614478231-rhsbohn77k2664h64phq1v128lqp78l9.apps.googleusercontent.com"
