@@ -26,7 +26,6 @@
 .connection-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
 }
 
 .card {
@@ -65,18 +64,8 @@
   text-align: center;
 }
 
-.card-action-button {
-  border-radius: 2px;
-  color: #FFAB40;
-  cursor: pointer;
-  display: inline-block;
-  font-weight: 500;
-  margin: 0;
-  padding: 10px;
+.card-action-button{
   text-decoration: none;
-  
+  color: black;
 }
 
-.card-action-button:hover {
-  background-color: rgba(255 ,168 ,58, .2);
-}

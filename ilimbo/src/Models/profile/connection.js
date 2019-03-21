@@ -37,15 +37,16 @@ class Connections extends Component {
     let cards = [];
       if (this.state.follow) {
         cards = this.state.follow.map(connection => {        
-        return (       
-          <div className="card" key={connection.id}>
+        return (
+          <a key={connection.id} className="card-action-button" href={process.env.REACT_APP_DOMAIN + '/profile/' + connection.id} id={connection.id}>       
+          <div className="card" >
             <img src={connection.img_url} className="card-media" />
             <div className="card-details">
               <h2 className="card-head"> {connection.first_name} {connection.last_name}</h2>
               <h2 className="card-body"> {connection.email} </h2>
-              <a className="card-action-button" href={process.env.REACT_APP_DOMAIN + '/profile/' + connection.id} id={connection.id}> PROFILE </a>
             </div>
           </div>
+          </a>
         )
       })
     }

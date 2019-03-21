@@ -4,19 +4,17 @@
   border: 1px #DDDDDD solid;
 }
 
-.bookmark-card::-webkit-scrollbar {
-  width: 0 !important
-}
 
-.bookmark-card {
-  text-align: center;
-  display: block;
-  width: 20%;
-  height: 200px;
-  position: relative;
-  margin: 1%;
-  background-color: yellow;
-  overflow: scroll;
+
+.bk-card {
+  background: #fff;
+  border-radius: 2px;
+  box-shadow: -1px 2px 4px rgba(0,0,0,.25), 1px 1px 3px rgba(0,0,0,.1);
+  margin: 10px;
+  min-width: 200px;
+  max-width: 200px;
+  /* min-height: 200px;
+  max-height: 200px; */
 }
 
 .bookmark-link:hover {
@@ -27,8 +25,11 @@
   padding: 25px;
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
 }
-
+.bk_bg{
+  background: lavender;
+}
 .bookmark-link {
   text-align: center
 }
@@ -61,43 +62,38 @@
   vertical-align: middle;
 }
 
-.card {
-  background-color: #fff;
-  border-radius: 2px;
-  box-shadow: -1px 2px 4px rgba(0,0,0,.25), 1px 1px 3px rgba(0,0,0,.1);
-  margin: 0 auto;
-  max-width: 200px;
-}
-
 .card-media {
   width: 100%;
 }
 
-.card-details {
+.bk-card-details {
   padding: 5px 15px;
 }
 
-.card-head {
-  font-weight: 100;
+.bk-card-head {
+  font-weight: 20;
   text-align: center;
-}
-
-.card-head {
   font-size: 26px;
   margin-bottom: 15px;
 }
 
-.card-action-button {
+.bookmark-card-read-button{
+  text-decoration: none;
+  color: black;
+}
+.bk-card-action-button {
   border-radius: 2px;
   color: #FFAB40;
   cursor: pointer;
-  display: inline-block;
   font-weight: 500;
   margin: 0;
   padding: 10px;
   text-decoration: none;
 }
-
-.card-action-button:hover {
-  background-color: rgba(255 ,168 ,58, .2);
+.bk-btn-group{
+  display: flex;
+  justify-content: space-around;
+}
+.bk-card-action-button:hover {
+  color: salmon;
 }
