@@ -29,9 +29,6 @@ class CommentList extends Component {
         'cache-control': 'no-cache',
         'pragma': 'no-cache'
       },
-      body: JSON.stringify({
-        token: response.getAuthResponse().id_token
-      })
     })
       .then(response => response.json())
       .then(response => {
