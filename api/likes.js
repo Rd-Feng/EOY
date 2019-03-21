@@ -19,7 +19,7 @@ router.get('/comment_action/:id/like', (req, res) => {
       console.log(err);
       res.send({status: 'failed'});
     } else {
-      res.send({status: 'success', query: 'I am liking comment:::'+'UPDATE comments SET likes=likes+1 WHERE id=' + connection.escape(req.params.id)});
+      res.send({status: 'success'});
     }
   });
 });
@@ -30,7 +30,7 @@ router.get('/comment_action/:id/unlike', (req, res) => {
       console.log(err);
       res.send({status: 'failed'});
     } else {
-      res.send({status: 'success', query: 'I am unliking comment:::'+'UPDATE comments SET likes=likes-1 WHERE id=' + connection.escape(req.params.id)});
+      res.send({status: 'success'});
     }
   });
 });

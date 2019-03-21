@@ -37,7 +37,11 @@ class Like extends Component {
     fetch(process.env.REACT_APP_API  + '/' + commentType + '_action' + '/' + this.state.comment_id + '/like')
       .then(res => res.json())
       .then(res => {
-        console.log(res);
+        if (res.status !== 'success') {
+          alert('Unable to like/unlike at this time');
+        } else {
+          console.log({status: 'succcess'});
+        }
       })
   }
 
@@ -46,7 +50,11 @@ class Like extends Component {
     fetch(process.env.REACT_APP_API + '/' +commentType + '_action' + '/' + this.state.comment_id + '/unlike')
       .then(res => res.json())
       .then(res => {
-        console.log(res);
+        if (res.status !== 'success') {
+          alert('Unable to like/unlike at this time');
+        } else {
+          console.log({status: 'succcess'});
+        }
       })
   }
 
