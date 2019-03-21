@@ -49,7 +49,7 @@ class Profile extends Component {
   }
 
   handleFollow() {
-    this.setState({ showFollw: true, showBookmark: false, bookmark_color: {}, follower_color: {}, follow_color: { 'backgroundColor': '#cce6ff', 'color': 'black' } })
+    this.setState({ showFollw: true, showFollower: false, showBookmark: false, bookmark_color: {}, follower_color: {}, follow_color: { 'backgroundColor': '#cce6ff', 'color': 'black' } })
   }
   handleFollower() {
     this.setState({ showFollw: false, showFollower: true, showBookmark: false, bookmark_color: {}, follow_color: {}, follower_color: { 'backgroundColor': '#b3ccff', 'color': 'black' } })
