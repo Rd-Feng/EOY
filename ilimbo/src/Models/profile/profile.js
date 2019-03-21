@@ -52,7 +52,7 @@ class Profile extends Component {
     this.setState({ showFollw: true, showFollower: false, showBookmark: false, bookmark_color: {}, follower_color: {}, follow_color: { 'backgroundColor': '#cce6ff', 'color': 'black' } })
   }
   handleFollower() {
-    this.setState({ showFollw: false, showFollower: true, showBookmark: false, bookmark_color: {}, follow_color: {}, follower_color: { 'backgroundColor': '#b3ccff', 'color': 'black' } })
+    this.setState({ showFollw: false, showFollower: true, showBookmark: false, bookmark_color: {}, follow_color: {}, follower_color: { 'backgroundColor': '#cce6ff', 'color': 'black' } })
   }
   handleBookMark() {
     this.setState({ showFollw: false, showBookmark: true, showFollower: false, follow_color: {}, follower_color: {}, bookmark_color: { 'backgroundColor': '#b3ccff', 'color': 'black' } })
