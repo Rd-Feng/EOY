@@ -16,6 +16,7 @@ class Bookmark extends Component {
     let user_id = localStorage.getItem("id_token");
     let titles = [];
     if (this.props.location.pathname.split("/")[1] === 'profile') {
+      user_id = this.props.match.params.user_id;
       this.setState({ bookmark: false })
     }
     fetch(process.env.REACT_APP_API + '/bookmarks/' + user_id)
@@ -36,7 +37,7 @@ class Bookmark extends Component {
       })
   }
   removeBookmark(id) {
-    fetch(process.env.REACT_APP_API+ '/bookmark/remove', {
+    fetch(process.env.REACT_APP_API + '/bookmark/remove', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -62,42 +63,47 @@ class Bookmark extends Component {
         let id = Object.keys(bookmark)[0]
         if (this.state.bookmark === true) {
           return (
-            <div className="card">
-              <div className="card-details">
-                <h2 className="card-head"> {bookmark[id]} </h2>
-                <a className="card-action-button" onClick={(e) => { this.removeBookmark(e.target.id); }} id={id} >REMOVE</a>
-                <a href={process.env.REACT_APP_DOMAIN + "/history/" + id} className="card-action-button">READ</a>
+            <div className="bk-card" key={id}>
+              <div className="bk-card-details">
+                <h2 className="bk-card-head"> {bookmark[id]} </h2>
+                <div className="bk-btn-group">
+                <a className="bk-card-action-button" onClick={(e) => { this.removeBookmark(e.target.id); }} id={id} >REMOVE</a>
+                <a href={process.env.REACT_APP_DOMAIN + "/history/" + id} className="bk-card-action-button">READ</a>
+                </div>
               </div>
             </div>
           )
         }
         else {
           return (
-            <div className="card">
-              <div className="card-details">
-                <h2 className="card-head"> {bookmark[id]} </h2>
-                <a href={process.env.REACT_APP_DOMAIN + "/history/" + id} className="card-action-button">READ</a>
-              </div>
-            </div>
+            <a key={id} href={process.env.REACT_APP_DOMAIN + "/history/" + id} className="bk-card bookmark-card-read-button">
+                <div className="bk-card-details">
+                  <h2 className="bk-card-head"> {bookmark[id]} </h2>
+                </div>
+            </a>
           )
         }
       })
     }
     if (cards.length === 0) {
-      cards = 
+      cards =
         <div className="null-bookmark"> No bookmarks found </div>
     }
     let navbar = <div> </div>
+    let bookmark_bg = ""
     if (this.state.bookmark) {
       navbar = <Homeheader />
+      bookmark_bg = "bk_bg"
+    }
+    else{
+      bookmark_bg = "bookmarkpageg"
     }
     return (
-      <div className="bookmarkpage">
-        
+      <div className={bookmark_bg}>
         {navbar}
         <div className="bookmark-container">
-	  {cards}
-	</div>
+          {cards}
+        </div>
       </div>
     )
   }
