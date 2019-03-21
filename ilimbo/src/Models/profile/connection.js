@@ -12,7 +12,6 @@ class Connections extends Component {
     }
   }
   componentDidMount() {
-    let list = []
     let user_id = this.props.match.params.user_id;
     fetch('http://localhost:4000/connections/' + user_id)
     .then(response => response.json())
@@ -23,6 +22,9 @@ class Connections extends Component {
           .then(res => res.json())
           .then(res => {
             this.state.follow.push(res.data[0]);
+            if(res.data[0]){
+              this.setState({found_connection: true})
+            }
           })
         })
       })
@@ -47,7 +49,7 @@ class Connections extends Component {
         )
       })
     }
-    if (cards.length === 0) {
+    if (!this.state.found_connection) {
       cards =  <div className="null-connection"> No connections found </div> 
     }
     return (
