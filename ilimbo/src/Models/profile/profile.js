@@ -68,13 +68,13 @@ class Profile extends Component {
           </div>
           <img className="profile_user_img" src={this.state.user_img}></img>
           <div className="profile_info_right">
-            {this.state.user_github && <a href={this.state.user_github}>
+            {this.state.user_github && <a href={this.state.user_github} target="_blank" rel="noopener noreferrer">
               <img alt="github" src={require(`../images/github.png`)} />
             </a>}
-            {this.state.user_linkedin && <a href={this.state.user_linkedin}>
+            {this.state.user_linkedin && <a href={this.state.user_linkedin} target="_blank" rel="noopener noreferrer">
               <img alt="linkedin" src={require(`../images/linkedin.png`)} />
             </a>}
-            {this.state.user_twitter && <a href={this.state.user_twitter}>
+            {this.state.user_twitter && <a href={this.state.user_twitter} target="_blank" rel="noopener noreferrer">
               <img alt="twitter" src={require(`../images/twitter.png`)} />
             </a>}
           </div>
