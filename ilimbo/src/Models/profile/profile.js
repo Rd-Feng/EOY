@@ -4,6 +4,7 @@ import './styles/profile.css'
 import Bookmark from '../bookmark'
 import Connection from './connection'
 import ConnectionBtn from './connection_button'
+import Followers from './followers'
 
 
 class Profile extends Component {
@@ -11,8 +12,10 @@ class Profile extends Component {
     super(props)
     this.state = {
       showFollw: true,
+      showFollower: false,
       showBookmark: false,
       follow_color: { 'backgroundColor': '#cce6ff', 'color': 'black'},
+      follower_color: {},
       bookmark_color: {}
     }
   }
@@ -37,14 +40,22 @@ class Profile extends Component {
           .then(response => {
             this.setState({ connection_count: response.data.length, connection: response.data });
           });
+        fetch(process.env.REACT_APP_API + '/connections/followers/' + this.props.location.pathname.split("/")[2])
+          .then(response => response.json())
+          .then(response => {
+            this.setState({ follower_count: response.data.length, follower: response.data });
+          });
       })
   }
 
   handleFollow() {
-    this.setState({ showFollw: true, showBookmark: false, bookmark_color: {}, follow_color: { 'backgroundColor': '#cce6ff', 'color': 'black' } })
+    this.setState({ showFollw: true, showBookmark: false, bookmark_color: {}, follower_color: {}, follow_color: { 'backgroundColor': '#cce6ff', 'color': 'black' } })
+  }
+  handleFollower() {
+    this.setState({ showFollw: false, showFollower: true, showBookmark: false, bookmark_color: {}, follow_color: {}, follower_color: { 'backgroundColor': '#b3ccff', 'color': 'black' } })
   }
   handleBookMark() {
-    this.setState({ showFollw: false, showBookmark: true, follow_color: {}, bookmark_color: { 'backgroundColor': '#b3ccff', 'color': 'black' } })
+    this.setState({ showFollw: false, showBookmark: true, showFollower: false, follow_color: {}, follower_color: {}, bookmark_color: { 'backgroundColor': '#b3ccff', 'color': 'black' } })
   }
   render() {
     return (
@@ -62,6 +73,7 @@ class Profile extends Component {
         <div className="profile_info_container">
           <div className="profile_info_left">
             <button style={this.state.follow_color} onClick={() => { this.handleFollow(); }}>{this.state.connection_count} Following</button>
+            <button style={this.state.follower_color} onClick={() => { this.handleFollower(); }}>{this.state.follower_count} Followers</button>
             <button style={this.state.bookmark_color} onClick={() => { this.handleBookMark(); }}>Bookmark</button>
           </div>
           <img className="profile_user_img" src={this.state.user_img}></img>
@@ -79,9 +91,8 @@ class Profile extends Component {
         </div>
         <div className="profile_content_container">
           {this.state.showFollw && <div className="profile_follow"><Connection /> </div>}
+          {this.state.showFollower && <div className="profile_follow"><Followers /> </div>}
           {this.state.showBookmark && <div className="profile_bookmark"><Bookmark user_id={this.props.match.params.user_id}/></div>}
-
-
         </div>
       </div>
     )

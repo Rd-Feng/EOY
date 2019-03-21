@@ -35,6 +35,17 @@ router.get('/connections/:user_id', (req, res) => {
   });
 });
 
+router.get('/connections/followers/:f_id', (req, res) => {
+  connection.query(`SELECT * FROM connections WHERE f_id=${connection.escape(req.params.f_id)}`, (err, results) => {
+    if (err) {
+      console.log(err);
+      res.send({status: 'failed'});
+    } else {
+      res.send({data: results});
+    }
+  });
+});
+
 router.post('/connections/connect', (req, res) => {
   const { user_id, f_id } = req.body;
   connection.query(`INSERT INTO connections (user_id, f_id) VALUES (${connection.escape(user_id)}, ${connection.escape(f_id)})`, (err) => {
