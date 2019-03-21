@@ -13,7 +13,7 @@ const connection = (() => {
   });
 })();
 
-router.get('/comment/:id/like', (req, res) => {
+router.get('/comment_action/:id/like', (req, res) => {
   connection.query('UPDATE comments SET likes=likes+1 WHERE id=' + connection.escape(req.params.id), (err) => {
     if (err) {
       console.log(err);
@@ -24,7 +24,7 @@ router.get('/comment/:id/like', (req, res) => {
   });
 });
 
-router.get('/comment/:id/unlike', (req, res) => {
+router.get('/comment_action/:id/unlike', (req, res) => {
   connection.query('UPDATE comments SET likes=likes-1 WHERE id=' + connection.escape(req.params.id), (err) => {
     if (err) {
       console.log(err);
