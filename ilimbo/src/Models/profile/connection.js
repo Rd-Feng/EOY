@@ -13,12 +13,12 @@ class Connections extends Component {
   }
   componentDidMount() {
     let user_id = this.props.match.params.user_id;
-    fetch('http://localhost:4000/connections/' + user_id)
+    fetch(process.env.REACT_APP_API + '/connections/' + user_id)
     .then(response => response.json())
     .then(response => {
       this.setState({ connections: response.data }, () => {
         this.state.connections.forEach(connection => {
-          fetch('http://localhost:4000/user/' + connection.f_id)
+          fetch(process.env.REACT_APP_API + '/user/' + connection.f_id)
           .then(res => res.json())
           .then(res => {
             this.state.follow.push(res.data[0]);
@@ -43,7 +43,7 @@ class Connections extends Component {
             <div className="card-details">
               <h2 className="card-head"> {connection.first_name} {connection.last_name}</h2>
               <h2 className="card-body"> {connection.email} </h2>
-              <a className="card-action-button" href={'http://localhost:3000/profile/' + connection.id} id={connection.id}> PROFILE </a>
+              <a className="card-action-button" href={process.env.REACT_APP_DOMAIN + '/profile/' + connection.id} id={connection.id}> PROFILE </a>
             </div>
           </div>
         )
