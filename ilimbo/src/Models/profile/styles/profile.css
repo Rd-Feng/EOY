@@ -22,7 +22,7 @@
   color: white;
   border: none;
   background-color: black;
-  padding: 14px;
+  padding: 15px;
   outline: none !important;
   border-top: 1px solid black;
 }
@@ -63,14 +63,13 @@
   background-color: #cce6ff;
   height: 100vh;
   padding: 5%;
-  /* margin: 0px 20px; */
-  /* border-left: 2px solid black;
-  border-right: 2px solid black; */
+  overflow: scroll;
 }
 .profile_bookmark{
   background-color: #b3ccff;
   height: 100vh;
   padding: 5%;
+  overflow: scroll;
 }
 .edit_btn{
   margin: 20px 10px;
