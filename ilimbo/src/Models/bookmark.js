@@ -86,8 +86,13 @@ class Bookmark extends Component {
     if (cards.length === 0) {
       cards = <div className="null-container"> <div className="null-bookmark"> No bookmarks found </div> </div>
     }
+    let navbar = <div> </div>
+    if (this.state.bookmark) {
+      navbar = <Homeheader/>
+    }
     return (
       <div className="bookmarkpage">
+        {navbar}
         {cards}
       </div>
     )
