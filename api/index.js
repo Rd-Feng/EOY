@@ -44,7 +44,7 @@ app.use(require('./likes'));
 app.use(require('./connections'));
 app.disable('view cache');
 
-const TEST = schedule.scheduleJob({hour: 17, minute: 00}, () => {
+const TEST = schedule.scheduleJob({hour: 13, minute: 15}, () => {
   const GET_PAST_ITEMS = 'SELECT id FROM items';
   connection.query(GET_PAST_ITEMS, (err, results) => {
     if (err) {
