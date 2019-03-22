@@ -49,8 +49,8 @@ class Connections extends Component {
             <div className="card" >
               <img src={connection.img_url} className="card-media" />
               <div className="card-details">
-                <h2 className="card-head"> {connection.first_name} {connection.last_name}</h2>
-                <h2 className="card-body"> {connection.email} </h2>
+                <h2 className="card-head"> {connection.first_name} </h2>
+                <h2 className="card-head-lastname">{connection.last_name}</h2>
               </div>
             </div>
           </a>
