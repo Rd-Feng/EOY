@@ -33,8 +33,8 @@ class OAuth extends Component {
         // <a onClick={() => {localStorage.clear(); this.props.history.push('/')}}>Logout</a>
         <GoogleLogout
           buttonText="Logout"
-          onSuccess={() => {localStorage.clear(); this.props.history.push('/'); console.log('success logout')}}
-          onFailure={() => {localStorage.clear(); this.props.history.push('/'); console.log('failed logout')}}
+          onLogoutSuccess={() => {localStorage.clear(); this.props.history.push('/'); console.log('success logout')}}
+          onLogoutFailure={() => {localStorage.clear(); this.props.history.push('/'); console.log('failed logout')}}
         ></GoogleLogout>
       )
     }
