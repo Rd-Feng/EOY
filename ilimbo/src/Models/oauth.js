@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import GoogleLogin from 'react-google-login'
+import { GoogleLogout } from 'react-google-login';
 import {withRouter} from 'react-router-dom';
 
 
@@ -28,7 +29,13 @@ class OAuth extends Component {
         })
     }
     if (localStorage.getItem('id_token')) {
-      return (<a onClick={() => {localStorage.clear(); this.props.history.push('/')}}>Logout</a>)
+      return (
+        // <a onClick={() => {localStorage.clear(); this.props.history.push('/')}}>Logout</a>
+        <GoogleLogout
+          buttonText="Logout"
+          onLogoutSuccess={() => {localStorage.clear(); this.props.history.push('/')}}
+        ></GoogleLogout>
+      )
     }
     return (
       <GoogleLogin
