@@ -10,7 +10,7 @@ class SubCommentList extends Component {
       showSubcomment: false
     }
     this.subCommentInfo = this.subCommentInfo.bind(this);
-    this.interval = setInterval(this.subCommentInfo, 500);
+    this.interval = setInterval(this.subCommentInfo, 2000);
   }
   componentDidMount() {
     this.setState({

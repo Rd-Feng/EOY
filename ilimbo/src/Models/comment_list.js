@@ -11,7 +11,7 @@ class CommentList extends Component {
       article_id: ''
     }
     this.GetComment = this.GetComment.bind(this);
-    this.interval = setInterval(this.GetComment, 500);
+    this.interval = setInterval(this.GetComment, 2000);
   }
   static getDerivedStateFromProps(props, state) {
     state.article_id = props.article_id;
