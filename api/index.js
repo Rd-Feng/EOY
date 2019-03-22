@@ -7,7 +7,7 @@ const {OAuth2Client} = require('google-auth-library');
 const request = require('request');
 const CLIENT_ID = '447724909836-ip4833mlicofoka8gaukf2ohm3tqacu0.apps.googleusercontent.com'; /* TODO: put it as env */
 const client = new OAuth2Client(CLIENT_ID);
-let ARTICLE_TODAY = '19420532';
+let ARTICLE_TODAY = '19453359';
 
 var whitelist = ['http://www.ilimbo.space']
 var corsOptions = {
@@ -44,7 +44,7 @@ app.use(require('./likes'));
 app.use(require('./connections'));
 app.disable('view cache');
 
-const TEST = schedule.scheduleJob({hour: 13, minute: 15}, () => {
+const TEST = schedule.scheduleJob({hour: 14, minute: 00}, () => {
   const GET_PAST_ITEMS = 'SELECT id FROM items';
   connection.query(GET_PAST_ITEMS, (err, results) => {
     if (err) {
@@ -52,7 +52,7 @@ const TEST = schedule.scheduleJob({hour: 13, minute: 15}, () => {
     } else {
       let history = [];
       results.map(result => history.push(result.id));
-      request('https://hacker-news.firebaseio.com/v0/topstories.json', (err, response, body) => {
+      request('https://hacker-news.firebaseio.com/v0/beststories.json', (err, response, body) => {
         if (err) {
           console.log(err);
         } else {
