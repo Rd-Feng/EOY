@@ -15,6 +15,7 @@ bookmark favorite articles. Users will also be able to share their contact infor
 1. Clone repo and run 'npm install` to install any dependencies
 2. Run both react application and api
 3. Application runs on port 3000
+4. API runs on port 4000
 NOTE: Replace keys with your own google API keys
 
 ## Authors
