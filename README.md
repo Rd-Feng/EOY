@@ -15,6 +15,7 @@ bookmark favorite articles. Users will also be able to share their contact infor
 ### Prerequisite 
 - MySQL 5.7
 - Node 11.X
+
 There are two parts of this project: the web application and backend API. You will need both of them running.
 
 API (located in `api/`):
@@ -33,6 +34,6 @@ Web Application (located in `ilimbo/`):
 [https://www.ilimbo.space]
 
 ## Authors
-##### Sumin Yu
-##### Rui Feng
-##### Jian Huang
+##### Sumin Yu [https://www.linkedin.com/in/sumin3/]
+##### Rui Feng [https://www.linkedin.com/in/rui-feng/]
+##### Jian Huang [https://www.linkedin.com/in/jianhuang2/]
